@@ -34,7 +34,7 @@ def run(graph, save_on_github=False, main_entity=None):
         uri = ";".join([s for s in graph.sources])
 
     # ontotemplate = open("template.html", "r")
-    ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "sigmajs.html", "r")
+    ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "sigmajs.html", "r")
 
     t = Template(ontotemplate.read())
 
@@ -59,7 +59,7 @@ def run(graph, save_on_github=False, main_entity=None):
     c = Context({
                     "ontology": ontology,
                     "main_uri" : uri,
-                    "STATIC_PATH": ONTOSPY_VIZ_STATIC,
+                    "STATIC_PATH": ONTODOCS_VIZ_STATIC,
                     "classes": graph.classes,
                     "classes_TOPLAYER": len(graph.toplayer),
                     "properties": graph.properties,

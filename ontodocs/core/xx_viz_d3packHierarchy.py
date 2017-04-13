@@ -4,11 +4,14 @@
 from . import *  # imports __init__
 from .. import *
 import json
+
 from .utils import build_D3treeStandard
 
 
-# TEMPLATE: D3 BAT HIERARCHY
-# original source: ...
+# TEMPLATE: D3 PACK HIERARCHY
+# http://mbostock.github.io/d3/talk/20111116/pack-hierarchy.html
+# https://github.com/d3/d3/wiki/Pack-Layout
+# http://bl.ocks.org/nilanjenator/4950148
 
 
 
@@ -19,7 +22,7 @@ from .utils import build_D3treeStandard
 
 
 
-def run(graph, save_on_github=False, main_entity=None):
+def run(graph, save_on_github=False, main_entity=None ):
 	"""
 	"""
 	try:
@@ -30,19 +33,24 @@ def run(graph, save_on_github=False, main_entity=None):
 		uri = ";".join([s for s in graph.sources])
 
 	# ontotemplate = open("template.html", "r")
-	ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "d3_barHierarchy.html", "r")
+	ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "d3_packHierarchy.html", "r")
 	t = Template(ontotemplate.read())
 
+	jsontree_classes = build_D3treeStandard(0, 99, 1, graph.toplayer)
 	c_total = len(graph.classes)
 
-	mylist = build_D3treeStandard(0, 99, 1, graph.toplayer)
 
-	JSON_DATA_CLASSES = json.dumps({'children': mylist, 'name': 'owl:Thing',})
+	if len(graph.toplayer) == 1:
+		# the first element can be the single top level
+		JSON_DATA_CLASSES = json.dumps(jsontree_classes[0])
+	else:
+		# hack to make sure that we have a default top level object
+		JSON_DATA_CLASSES = json.dumps({'children': jsontree_classes, 'name': 'owl:Thing',})
 
 	c = Context({
 					"ontology": ontology,
 					"main_uri" : uri,
-					"STATIC_PATH": ONTOSPY_VIZ_STATIC,
+					"STATIC_PATH": ONTODOCS_VIZ_STATIC,
 					"save_on_github" : save_on_github,
 					'JSON_DATA_CLASSES' : JSON_DATA_CLASSES,
 					"TOTAL_CLASSES": c_total,
@@ -51,6 +59,8 @@ def run(graph, save_on_github=False, main_entity=None):
 	rnd = t.render(c)
 
 	return safe_str(rnd)
+
+
 
 
 

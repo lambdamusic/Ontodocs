@@ -9,8 +9,6 @@
 
 
 from .. import *
-from ..core.utils import *
-from ..core.manager import *
 
 from .utils import *
 from .builder import validate_theme, random_theme

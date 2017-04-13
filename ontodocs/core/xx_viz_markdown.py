@@ -7,7 +7,7 @@ from .. import *
 from ..core.entities import OntoClass, OntoProperty, OntoSKOSConcept, Ontology
 
 
-# TEMPLATE: HTML SPLITTER MULTI FILE
+# TEMPLATE: MARKDOWN EXPORT - MULTI FILE
 
 
 #
@@ -22,7 +22,7 @@ from ..core.entities import OntoClass, OntoProperty, OntoSKOSConcept, Ontology
 
 def run(graph, save_on_github=False, main_entity=None):
     """
-    From a graph instance outputs some nicely formatted html text.
+    From a graph instance outputs a nicely formatted html documentation file.
     
     2016-08-07: hacked for multi file save
     """
@@ -37,45 +37,46 @@ def run(graph, save_on_github=False, main_entity=None):
     context = {
                     "ontology": ontology,
                     "main_uri" : uri,
+                    "ontospy_version" : VERSION,
                     "ontograph": graph,
-                    "STATIC_PATH": ONTOSPY_VIZ_STATIC,
+                    "STATIC_PATH": ONTODOCS_VIZ_STATIC,
                 }
     
 
     # Pygments CSS
-    try:
-        from pygments import highlight
-        from pygments.lexers.rdf import TurtleLexer
-        from pygments.formatters import HtmlFormatter
-
-        pygments_code = highlight(main_entity.serialize(), TurtleLexer(), HtmlFormatter())
-        pygments_code_css = HtmlFormatter().get_style_defs('.highlight')
-        context.update({ "pygments_code" : pygments_code,
-                         "pygments_code_css": pygments_code_css
-                         })
-    except Exception as e:
-        pass
-
+    # try:
+    #     from pygments import highlight
+    #     from pygments.lexers.rdf import TurtleLexer
+    #     from pygments.formatters import HtmlFormatter
+    # 
+    #     pygments_code = highlight(main_entity.serialize(), TurtleLexer(), HtmlFormatter())
+    #     pygments_code_css = HtmlFormatter().get_style_defs('.highlight')
+    #     context.update({ "pygments_code" : pygments_code,
+    #                      "pygments_code_css": pygments_code_css
+    #                      })
+    # except Exception, e:
+    #     pass
+    # 
 
         
     if type(main_entity) == OntoClass:
-        ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "splitter/splitter_classinfo.html", "r")
+        ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "markdown/markdown_classinfo.md", "r")
         context.update({ "main_entity" : main_entity,
                          "main_entity_type": "class"
                          })
     elif type(main_entity) == OntoProperty:
-        ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "splitter/splitter_propinfo.html", "r")
+        ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "markdown/markdown_propinfo.md", "r")
         context.update({ "main_entity" : main_entity,
                          "main_entity_type": "property"
                          })
     elif type(main_entity) == OntoSKOSConcept:
-        ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "splitter/splitter_conceptinfo.html", "r")
+        ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "markdown/markdown_conceptinfo.md", "r")
         context.update({ "main_entity" : main_entity,
                          "main_entity_type": "concept"
                          })
     else:
             # if type(main_entity) == Ontology:
-        ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "splitter/splitter_ontoinfo.html", "r")
+        ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "markdown/markdown_ontoinfo.md", "r")
 
 
     t = Template(ontotemplate.read())
@@ -93,7 +94,7 @@ def run(graph, save_on_github=False, main_entity=None):
 
 if __name__ == '__main__':
     """
-    > python -m viz.viz_splitter_multi
+    > python -m viz.viz_markdown
 
     2016-08-04: # testing bypassing the usual abstract routine so to generate multiple files
 
@@ -102,8 +103,6 @@ if __name__ == '__main__':
     try:
 
         # script for testing - must launch this module direclty eg
-
-        # > python -m viz.viz_splitter_multi
 
         func = locals()["run"] # main func dynamically
         # run_test_viz(func)
@@ -118,9 +117,9 @@ if __name__ == '__main__':
             g = do_pickle_ontology(ontouri)
 
 
-        def _saveVizLocally(contents, filename="index.html", path=None):
+        def _saveVizLocally(contents, filename="index.md", path=None):
             if not path:
-                filename = ONTOSPY_LOCAL_VIZ + "/" + filename
+                filename = ONTODOCS_LOCAL_VIZ + "/" + filename
             else:
                 filename = os.path.join(path, filename)
 
@@ -133,20 +132,20 @@ if __name__ == '__main__':
 
         from os.path import expanduser
         home = expanduser("~")
-        DEST_FOLDER = os.path.join(home, "ontospy-viz")
+        DEST_FOLDER = os.path.join(home, "ontospy-viz/markdown")
         if not os.path.exists(DEST_FOLDER):
             os.makedirs(DEST_FOLDER)
 
         # main index page for graph
         contents = func(g, False, None)
-        index_url = _saveVizLocally(contents, "index.html", DEST_FOLDER)
+        index_url = _saveVizLocally(contents, "index.md", DEST_FOLDER)
         
         entities = [g.classes, g.properties, g.skosConcepts]
         for group in entities:
             for c in group:
                 # getting main func dynamically
                 contents = func(g, False, c)
-                _filename = c.slug + ".html"
+                _filename = c.slug + ".md"
                 url = _saveVizLocally(contents, _filename, DEST_FOLDER)
 
         if index_url:  # open browser

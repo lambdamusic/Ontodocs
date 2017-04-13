@@ -7,7 +7,7 @@ import json
 from .utils import build_D3treeStandard
 
 
-# TEMPLATE: D3 ROTATING CLUSTER
+# TEMPLATE: D3 BAT HIERARCHY
 # original source: ...
 
 
@@ -30,7 +30,7 @@ def run(graph, save_on_github=False, main_entity=None):
 		uri = ";".join([s for s in graph.sources])
 
 	# ontotemplate = open("template.html", "r")
-	ontotemplate = open(ONTOSPY_VIZ_TEMPLATES + "d3_cluster.html", "r")
+	ontotemplate = open(ONTODOCS_VIZ_TEMPLATES + "d3_barHierarchy.html", "r")
 	t = Template(ontotemplate.read())
 
 	c_total = len(graph.classes)
@@ -42,7 +42,7 @@ def run(graph, save_on_github=False, main_entity=None):
 	c = Context({
 					"ontology": ontology,
 					"main_uri" : uri,
-					"STATIC_PATH": ONTOSPY_VIZ_STATIC,
+					"STATIC_PATH": ONTODOCS_VIZ_STATIC,
 					"save_on_github" : save_on_github,
 					'JSON_DATA_CLASSES' : JSON_DATA_CLASSES,
 					"TOTAL_CLASSES": c_total,

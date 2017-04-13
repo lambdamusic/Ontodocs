@@ -3,7 +3,7 @@
 
 
 """
-ONTOSPY
+ONTODOCS
 Copyright (c) 2013-2017 __Michele Pasin__ <http://www.michelepasin.org>.
 All rights reserved.
 

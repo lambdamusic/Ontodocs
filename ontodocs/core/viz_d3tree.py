@@ -7,10 +7,10 @@
 #
 
 
-
-from .. import *
-from ..core.utils import *
-from ..core.manager import *
+from ontospy import *
+# from .. import *
+# from ..core.utils import *
+# from ..core.manager import *
 
 from .utils import *
 from .viz_factory import VizFactory
@@ -92,7 +92,7 @@ class D3TreeViz(VizFactory):
 	# c = Context({
 	# 				"ontology": ontology,
 	# 				"main_uri" : uri,
-	# 				"STATIC_PATH": ONTOSPY_VIZ_STATIC,
+	# 				"STATIC_PATH": ONTODOCS_VIZ_STATIC,
 	# 				"save_on_github" : save_on_github,
 	# 				"classes": graph.classes,
 	# 				"classes_TOPLAYER": len(graph.toplayer),

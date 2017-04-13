@@ -7,11 +7,16 @@
 #
 
 
+from ontospy import *
+from ontospy.core import actions as ontospy_actions
+from ontospy.core import manager as ontospy_manager
+from ontospy.core.utils import *
 
 from .. import *
-from ..core.utils import *
-from ..core.manager import *
-from ..core.actions import *
+
+# from ..core.utils import *
+# from ..core.manager import *
+# from ..core.actions import *
 
 # Fix Python 2.x.
 try:
@@ -38,10 +43,10 @@ if StrictVersion(django.get_version()) > StrictVersion('1.7'):
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [
                 # insert your TEMPLATE_DIRS here
-                ONTOSPY_VIZ_TEMPLATES + "html-simple",
-                ONTOSPY_VIZ_TEMPLATES + "markdown",
-                ONTOSPY_VIZ_TEMPLATES + "html-multi",
-                ONTOSPY_VIZ_TEMPLATES + "misc",
+                ONTODOCS_VIZ_TEMPLATES + "html-simple",
+                ONTODOCS_VIZ_TEMPLATES + "markdown",
+                ONTODOCS_VIZ_TEMPLATES + "html-multi",
+                ONTODOCS_VIZ_TEMPLATES + "misc",
             ],
             'APP_DIRS': True,
             'OPTIONS': {
@@ -133,7 +138,7 @@ def action_visualize(args, fromshell=False, path=None, title="", theme="", verbo
 
     # get argument
     if not(args):
-        ontouri = action_listlocal(all_details=False)
+        ontouri = ontospy_actions.action_listlocal(all_details=False)
         if ontouri:
             islocal = True
         else:
@@ -161,7 +166,7 @@ def action_visualize(args, fromshell=False, path=None, title="", theme="", verbo
     else:
         printDebug("Loading graph...", dim=True)
         if islocal:
-            g = Ontospy(os.path.join(get_home_location(), ontouri), verbose=verbose)
+            g = Ontospy(os.path.join(ontospy_manager.get_home_location(), ontouri), verbose=verbose)
         else:
             g = Ontospy(ontouri, verbose=verbose)
 
@@ -291,7 +296,7 @@ def _copyStaticFiles(files_list, path, folder="static"):
     if not os.path.exists(static_path):
         os.makedirs(static_path)
     for x in files_list:
-        source_f = os.path.join(ONTOSPY_VIZ_STATIC, x)
+        source_f = os.path.join(ONTODOCS_VIZ_STATIC, x)
         dest_f = os.path.join(static_path, x)
         copyfile(source_f, dest_f)
 
@@ -299,7 +304,7 @@ def _copyStaticFiles(files_list, path, folder="static"):
 
 def saveVizLocally(contents, filename="index.html", path=None):
     if not path:
-        filename = ONTOSPY_LOCAL_VIZ + "/" + filename
+        filename = ONTODOCS_LOCAL_VIZ + "/" + filename
     else:
         filename = os.path.join(path, filename)
 

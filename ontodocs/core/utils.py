@@ -1,8 +1,9 @@
 # !/usr/bin/env python
 #  -*- coding: UTF-8 -*-
 
-from . import *  # imports __init__
-from .. import main
+# from . import *  # imports __init__
+# from .. import main
+
 import json
 
 

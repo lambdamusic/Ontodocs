@@ -5,9 +5,13 @@
 
 
 
+from ontospy import *
+from ontospy.core.utils import *
+
 from .. import *
-from ..core.utils import *
-from ..core.manager import *
+
+# from ..core.utils import *
+# from ..core.manager import *
 
 from .utils import *
 
@@ -71,8 +75,8 @@ class VizFactory(object):
         self.output_path_DEFAULT = os.path.join(home, "ontospy-viz-test")
         self.template_name = ""
         self.main_file_name = ""
-        self.templates_root = ONTOSPY_VIZ_TEMPLATES
-        self.static_root = ONTOSPY_VIZ_STATIC
+        self.templates_root = ONTODOCS_VIZ_TEMPLATES
+        self.static_root = ONTODOCS_VIZ_STATIC
         self.title = title or self.infer_best_title()
         self.basic_context_data = self._build_basic_context()
 
