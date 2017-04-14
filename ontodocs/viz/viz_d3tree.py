@@ -2,43 +2,20 @@
 #  -*- coding: UTF-8 -*-
 #
 #
-# VIZ MARKDOWN
-#
-#
-
-
-from ontospy import *
-# from .. import *
-# from ..core.utils import *
-# from ..core.manager import *
-
-from .utils import *
-from .viz_factory import VizFactory
-
-# Fix Python 2.x.
-try:
-    input = raw_input
-except NameError:
-    pass
-
-# django loading requires different steps based on version
-# https://docs.djangoproject.com/en/dev/releases/1.7/#standalone-scripts
-import django
-
-# http://stackoverflow.com/questions/1714027/version-number-comparison
-from distutils.version import StrictVersion
-
-if StrictVersion(django.get_version()) > StrictVersion('1.7'):
-    from django.conf import settings
-    from django.template import Context, Template
-
-else:
-    from django.conf import settings
-    from django.template import Context, Template
+# ==================
+# VIZ D3 Tree - a d3 dendogram
+# ==================
 
 
 import os, sys
 import json
+
+from ..core import *
+from ..core.utils import *
+from ..core.builder import *  # loads and sets up Django
+from ..core.viz_factory import VizFactory
+
+
 
 
 
@@ -130,18 +107,14 @@ class D3TreeViz(VizFactory):
 
 
 
-# if called directly, for testing purposes run the basic HTML rendering
+# if called directly, for testing purposes pick a random ontology
 
 if __name__ == '__main__':
 
     TEST_ONLINE = False
     try:
 
-        if TEST_ONLINE:
-            from ..core.ontospy import Ontospy
-            g = Ontospy("http://cohere.open.ac.uk/ontology/cohere.owl#")
-        else:
-            uri, g = get_random_ontology(50)
+        g = get_onto_for_testing(TEST_ONLINE)
 
         v = D3TreeViz(g, title="")
         v.build()

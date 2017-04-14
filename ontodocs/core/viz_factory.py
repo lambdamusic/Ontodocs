@@ -9,11 +9,8 @@ from ontospy import *
 from ontospy.core.utils import *
 
 from .. import *
-
-# from ..core.utils import *
-# from ..core.manager import *
-
 from .utils import *
+
 
 # Fix Python 2.x.
 try:
@@ -58,9 +55,9 @@ except:  # Mother of all exceptions
 
 class VizFactory(object):
     """
-    Object encapsulating common methods for building HTML visualizations
+    Object encapsulating common methods for building visualizations
 
-    Subclass and override as needed.
+    Tip: subclass and override as needed.
     """
 
     def __init__(self, ontospy_graph, title=""):

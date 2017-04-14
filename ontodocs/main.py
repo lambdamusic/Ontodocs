@@ -17,6 +17,7 @@ import click
 # http://click.pocoo.org/5/options/
 
 from ontospy.core import manager as ontospy_manager
+
 from . import *
 from .core.builder import *
 

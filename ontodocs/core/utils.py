@@ -144,3 +144,19 @@ def formatHTML_EntityTreeTable(treedict, element=0):
 		# stringa += "</li>"
 	stringa += "</table>"
 	return stringa
+
+
+
+
+
+
+
+def get_onto_for_testing(TEST_ONLINE=False):
+	"Wrapper for util script used in viz main methods"
+	if TEST_ONLINE:
+		from ontospy import Ontospy
+		g = Ontospy("http://cohere.open.ac.uk/ontology/cohere.owl#")
+	else:
+		from ontospy.core.manager import get_random_ontology
+		uri, g = get_random_ontology(50)
+	return g
