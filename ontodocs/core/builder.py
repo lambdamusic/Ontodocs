@@ -127,14 +127,14 @@ def ask_visualization():
 
 
 
+# MAIN METHOD
+
 
 def action_visualize(args, fromshell=False, path=None, title="", theme="", verbose=False):
     """
     export model into another format eg html, d3 etc...
     <fromshell> : the local name is being passed from ontospy shell
     """
-
-    # from ..viz import ask_visualization, build_viz, VISUALIZATIONS_LIST
 
     # get argument
     if not(args):
@@ -228,92 +228,7 @@ def build_visualization(ontouri, g, viz_index, path=None, title="", theme=""):
 
 
 
-# LEGACY LEGACY LEGACY
 
-def build_viz(ontouri, g, viz_index, path=None):
-    """
-
-    :param g:
-    :param viz_index:
-    :param main_entity:
-    :return:
-    """
-
-    this_viz = VISUALIZATIONS_LIST[viz_index]
-
-    extension = "." + this_viz["File-extension"]
-
-    import importlib
-    module_name = this_viz['ID']
-    viz_module = importlib.import_module(".viz_" + module_name, "ontospy.viz")
-    VIZ_WORKER = viz_module.run  # dynamically referenced
-
-    if this_viz['Type'] == "single-file":
-        url = _buildSingleFile(ontouri, g, VIZ_WORKER, extension, path)
-
-    elif this_viz['Type'] == "multi-file":
-        url = _buildMultiFile(ontouri, g, VIZ_WORKER, extension, path)
-
-    # save static files too
-    if this_viz['Static-files']:
-        _copyStaticFiles(this_viz['Static-files'], path)
-
-    return url
-
-
-def _buildSingleFile(ontouri, g, VIZ_WORKER, extension, path):
-    # simple  viz DISPATCHER
-    contents = VIZ_WORKER(g, False)
-    # once viz contents are generated, save file locally or on github
-    url = saveVizLocally(contents, slugify(unicode(ontouri)) + extension, path)
-    printDebug("Documentation generated: <%s>" % url, "green")
-    return url
-
-
-def _buildMultiFile(ontouri, g, VIZ_WORKER, extension, path):
-    """
-    one file per entity in ontology
-    """
-    contents = VIZ_WORKER(g, False, None)
-    index_url = saveVizLocally(contents, "index" + extension, path)
-
-    entities = [g.classes, g.properties, g.skosConcepts]
-    for group in entities:
-        for c in group:
-            # getting main func dynamically
-            contents = VIZ_WORKER(g, False, c)
-            _filename = c.slug + extension
-            url = saveVizLocally(contents, _filename, path)
-
-    url = index_url
-    printDebug("Documentation generated: <%s>" % url, "green")
-    return url
-
-
-def _copyStaticFiles(files_list, path, folder="static"):
-    """ move over static files so that relative imports work """
-    static_path = os.path.join(path, folder)
-    if not os.path.exists(static_path):
-        os.makedirs(static_path)
-    for x in files_list:
-        source_f = os.path.join(ONTODOCS_VIZ_STATIC, x)
-        dest_f = os.path.join(static_path, x)
-        copyfile(source_f, dest_f)
-
-
-
-def saveVizLocally(contents, filename="index.html", path=None):
-    if not path:
-        filename = ONTODOCS_LOCAL_VIZ + "/" + filename
-    else:
-        filename = os.path.join(path, filename)
-
-    f = open(filename, 'wb')
-    f.write(contents)  # python will convert \n to os.linesep
-    f.close()  # you can omit in most cases as the destructor will call it
-
-    url = "file://" + filename
-    return url
 
 
 def saveVizGithub(contents, ontouri):
@@ -357,29 +272,3 @@ SOFTWARE."""
     }
     urls = save_anonymous_gist(title, files)
     return urls
-
-
-def run_test_viz(func, filename="index.html", path=None):
-    """
-    2016-06-20: wrapper for command line usage
-    # script for testing - must launch as module for each viz eg
-    # >python -m ontospy.viz.viz_packh
-    """
-
-    import webbrowser, random
-    ontouri = get_localontologies()[random.randint(0, 10)]  # [0]
-    print("Testing with URI: %s" % ontouri)
-
-    g = get_pickled_ontology(ontouri)
-    if not g:
-        g = do_pickle_ontology(ontouri)
-
-    # getting main func dynamically
-    contents = func(g, False)
-
-    url = saveVizLocally(contents, filename, path)
-    if url:  # open browser
-        import webbrowser
-        webbrowser.open(url)
-
-    return True
