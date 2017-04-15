@@ -28,13 +28,12 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 @click.command(context_settings=CONTEXT_SETTINGS)
 @click.argument('source', nargs=-1)
-@click.option('--library', '-l', is_flag=True, help='List ontologies saved in the OntoSpy local library.')
 @click.option('--outputpath', '-o',  help='Output path (default: home folder).')
-@click.option('--title',  help='Title for the visualization (default=graph uri).')
+@click.option('--title', '-t', help='Title for the visualization (default=graph uri).')
 @click.option('--theme',  help='CSS Theme for the html-complex visualization (random=use a random theme).')
 @click.option('--showthemes', is_flag=True, help='Show the available CSS theme choices.')
 @click.option('--verbose', '-v', is_flag=True, help='Verbose mode.')
-def cli_run_viz(source=None, library=False, outputpath="", title="", theme="", showthemes=False, verbose=False):
+def cli_run_viz(source=None, outputpath="", title="", theme="", showthemes=False, verbose=False):
     """
 Ontodocs is an application of the OntoSpy library which can be used to quickly create  documentation for a ontology encoded in RDF/OWL.
 
@@ -64,32 +63,20 @@ E.g.:
             click.secho("WARNING: the -o option must include a valid directory path.", fg="red")
             sys.exit(0)
 
-    if not library and not source:
+    if not source:
+        # ask to show local library
+        click.secho("You haven't specified any argument.", fg='red')
+        if click.confirm('Show the local OntoSpy library (-h for more options)?'):
+            pass
+        else:
+            printDebug("Goodbye.", "comment")
+            raise SystemExit(1)
 
-        # TODO: ask to show local library
-        # click.secho("You haven't specified any argument.", fg='red')
-        # if click.confirm('Show the local OntoSpy library?'):
-        #     filename = ontospy.action_listlocal(all_details=False)
-        #     if filename:
-        #         g = get_pickled_ontology(filename)
-        #         if not g:
-        #             g = do_pickle_ontology(filename)
-        #         shellPrintOverview(g, print_opts)
-        # else:
-        #     printDebug("Goodbye.", "comment")
-        #     raise SystemExit(1)
-        #
-        #
-        click.secho("WARNING: not enough options. Use -h for help.", fg="red")
-        sys.exit(0)
-
-    if library:
-        click.secho("Showing the local library: '%s'" % ontospy_manager.get_home_location(), fg='red')
 
     if source and len(source) > 1:
         click.secho('Note: currently only one argument can be passed', fg='red')
 
-
+    # note: the local ontospy library gets displayed via this method too
     url = action_visualize(source, fromshell=False, path=outputpath, title=title, theme=theme, verbose=verbose)
 
 
@@ -97,15 +84,11 @@ E.g.:
         import webbrowser
         webbrowser.open(url)
 
-        # continue and print(timing at bottom )
 
     # finally: print(some stats.... )
     eTime = time.time()
     tTime = eTime - sTime
     printDebug("\n----------\n" + "Time:	   %0.2fs" %  tTime, "comment")
-
-
-    # raise SystemExit(1)
 
 
 
