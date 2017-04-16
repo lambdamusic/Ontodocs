@@ -32,6 +32,26 @@ Options:
   -h, --help             Show this message and exit.
 ```
 
+The library is not really meant to be used programmatically, but I'm sure there are a few constructs in there which can be reused.
+
+In a nutshell, all visualizations inherited from a [VizFactory](https://github.com/lambdamusic/Ontodocs/blob/master/ontodocs/core/viz_factory.py) class that abstracts away the most common operations involved in rendering a dataviz.
+
+This is how you would invoke a visualization from a script:
+
+```
+import ontospy
+from ontodocs.viz.viz_html_single import *
+
+g = ontospy.Ontospy("http://cohere.open.ac.uk/ontology/cohere.owl#")
+
+v = HTMLVisualizer(g) # => instantiate the visualization object
+v.build() # => render visualization. You can pass an 'output_path' parameter too
+v.preview() # => open in browser
+
+```
+
+
+
 ### Example outputs
 
 For some examples of what the outputs visualizations look like, please see this link:
