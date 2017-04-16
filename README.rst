@@ -1,13 +1,6 @@
 Ontodocs
 =======================
 
-@todo
+Ontodocs is a Python command line application aimed at facilitating the creation of documentation for ontologies encoded in RDF/OWL.
 
-Description
-------------
-@todo
-
-
-Dependencies
----------------
-https://github.com/lambdamusic/Ontospy/wiki
+See [wiki]()

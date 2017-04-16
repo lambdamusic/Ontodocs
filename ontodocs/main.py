@@ -33,9 +33,9 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.option('--theme',  help='CSS Theme for the html-complex visualization (random=use a random theme).')
 @click.option('--showthemes', is_flag=True, help='Show the available CSS theme choices.')
 @click.option('--verbose', '-v', is_flag=True, help='Verbose mode.')
-def cli_run_viz(source=None, outputpath="", title="", theme="", showthemes=False, verbose=False):
+def main_cli(source=None, outputpath="", title="", theme="", showthemes=False, verbose=False):
     """
-Ontodocs is an application of the OntoSpy library which can be used to quickly create  documentation for a ontology encoded in RDF/OWL.
+Ontodocs allows to create  documentation for ontologies encoded in RDF/OWL.
 
 E.g.:
 
@@ -66,10 +66,10 @@ E.g.:
     if not source:
         # ask to show local library
         click.secho("You haven't specified any argument.", fg='red')
-        if click.confirm('Show the local OntoSpy library (-h for more options)?'):
+        if click.confirm('Select an ontology from the local OntoSpy library?'):
             pass
         else:
-            printDebug("Goodbye.", "comment")
+            printDebug("Goodbye (tip: use -h for more options).", "comment")
             raise SystemExit(1)
 
 

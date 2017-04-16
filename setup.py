@@ -2,7 +2,7 @@
 # trick to manage package versions in one place only
 # http://stackoverflow.com/questions/458550/standard-way-to-embed-version-into-python-package
 import re
-VERSIONFILE="ontospy/VERSION.py"
+VERSIONFILE="ontodocs/VERSION.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
 mo = re.search(VSRE, verstrline, re.M)
@@ -48,9 +48,9 @@ def get_package_folders(top_folder, root_path):
     return out
 
 
-project_root = os.path.join(here, "ontospy")
-static_root = os.path.join(project_root, "viz", "static")
-templates_root = os.path.join(project_root, "viz", "templates")
+project_root = os.path.join(here, "ontodocs")
+static_root = os.path.join(project_root, "media", "static")
+templates_root = os.path.join(project_root, "media", "templates")
 # dynamically generate list of data folders
 package_data_folders = get_package_folders(static_root, project_root) + get_package_folders(templates_root, project_root)
 
@@ -64,18 +64,18 @@ if False:
 
 
 setup(
-    name='ontospy',
+    name='ontodocs',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/distributing.html#version
     version=VERSIONSTRING,
 
-    description='A Python package for working with RDF/OWL ontologies',
+    description='A Python package for creating ontology documentation',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://github.com/lambdamusic/ontospy',
+    url='https://github.com/lambdamusic/ontodocs',
 
     # Author details
     author='Michele Pasin',
@@ -111,7 +111,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='ontology semantic web linked data rdf owl',
+    keywords='ontology semantic web linked data rdf owl documentation',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -123,26 +123,19 @@ setup(
     # http://python-packaging-user-guide.readthedocs.org/en/latest/requirements/
     # NOTE: packages are installed in reverse order
     install_requires=[
-        'rdflib',
-        'rdflib-jsonld',
-        'SPARQLWrapper',
-		'colorama',
+        'ontospy',
 		'django',
-        'requests',
-        'pyfiglet',
-        'click',
         'pygments',
-		'pyparsing',
 	],
 
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:
     # $ pip install -e .[dev,test]
-    extras_require = {
-	'shell-autocomplete': ['readline']
+    # extras_require = {
+	# 'shell-autocomplete': ['readline']
         # 'dev': ['check-manifest'],
         # 'test': ['coverage'],
-    },
+    # },
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -152,7 +145,7 @@ setup(
     # },
 
     package_data={
-        'ontospy': package_data_folders
+        'ontodocs': package_data_folders
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
@@ -166,10 +159,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            # 'ontospy-sketch=ontospy.extras.sketch:main',
-            'ontospy-shell=ontospy.shell.main:cli_run_shell',
-            'ontospy-viz=ontospy.viz.main:cli_run_viz',
-            'ontospy=ontospy.main:main_cli'
+            'ontodocs=ontodocs.main:main_cli'
         ],
     },
 )
