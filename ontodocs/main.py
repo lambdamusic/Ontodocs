@@ -95,7 +95,7 @@ E.g.:
 if __name__ == '__main__':
     try:
         # http://stackoverflow.com/questions/32553969/modify-usage-string-on-click-command-line-interface-on-windows
-        cli_run_viz(prog_name='ontodocs')
+        main_cli(prog_name='ontodocs')
         sys.exit(0)
     except KeyboardInterrupt as e: # Ctrl-C
         raise e
