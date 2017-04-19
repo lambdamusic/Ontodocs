@@ -15,6 +15,10 @@ VISUALIZATIONS_LIST = {
         "ID": "markdown",
         "Title": "Markdown: multi-page",
         "Description": "@todo",
+      } , {
+        "ID": "d3-tree",
+        "Title": "D3 Dendogram",
+        "Description": "@todo",
       }
   ]
 }

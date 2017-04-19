@@ -189,7 +189,7 @@ def action_visualize(args, fromshell=False, path=None, title="", theme="", verbo
 
 
 # ===========
-# MAIN RUNNER FUNCTION
+# VIZ SELECTION FUNCTION
 # ===========
 
 
@@ -216,6 +216,10 @@ def build_visualization(ontouri, g, viz_index, path=None, title="", theme=""):
     elif this_viz['ID'] == "markdown":
         from ..viz.viz_markdown import MarkdownViz
         v = MarkdownViz(g, title)
+
+    elif this_viz['ID'] == "d3-tree":
+        from ..viz.viz_d3tree import D3TreeViz
+        v = D3TreeViz(g, title, theme)
 
     else:
         return False
