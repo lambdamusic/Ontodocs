@@ -13,8 +13,8 @@
 
 
 <style type="text/css" media="screen">
-  	
-		
+
+
 
 	body {
 	    margin-left: 6em;
@@ -34,7 +34,7 @@
 
 	.margintop {
 		 margin-top: 40px;
-	}	
+	}
 
 
     #container {
@@ -44,20 +44,20 @@
     }
 
 </style>
-  
+
 
 </head>
 
 
 <body>
-	
+
 	{# VISIBLE PAGE HTML #}
 
 	{# note: showpanel arg is the ID of the div that is showing.. #}
-	
+
 	<h1 class="title">Ontology:&nbsp;<a href="javascript:showpanel('ontoinfo');">{{main_uri}}</a></h1>
 	<h3>{{ontology.bestDescription}}</h3>
-    
+
 	<p><small class="credits">Ontology documentation automatically generated with <a class="greylink" href="http://ontospy.readthedocs.org/" target="_blank">OntoSpy</a> on {% now "jS F Y H:i" %}</small></p>
 
 
@@ -67,15 +67,20 @@
 
 
     <div id="container"></div>
-    <script src="static/sigma.min.js"></script>
-    <script src="static/sigma.parsers.json.min.js"></script>
-    <script src="static/sigma.layout.forceAtlas2.min.js"></script>
+
+    {# JAVASCRIPT #}
+
+    <script type="text/javascript" src="{{STATIC_URL}}libs/sigma/sigma.min.js"></script>
+
+    <script type="text/javascript" src="{{STATIC_URL}}libs/sigma/plugins/sigma.parsers.json.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}libs/sigma/plugins/sigma.layout.forceAtlas2.min.js"></script>
 
 
-	
+
+
 	<hr>
 	<small class="credits">Documentation automatically generated with <a href="https://github.com/lambdamusic/OntoSpy" target="_blank" class="greylink">OntoSpy</a> on {% now "jS F Y H:i" %}</small>
-	
+
 
 
 
@@ -122,5 +127,3 @@
 
 </body>
 </html>
-
-

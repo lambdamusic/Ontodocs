@@ -65,28 +65,6 @@ class D3TreeViz(VizFactory):
         JSON_DATA_PROPERTIES = json.dumps({'children' : p_mylist, 'name' : 'Properties', 'id' : "None" })
         JSON_DATA_CONCEPTS = json.dumps({'children' : s_mylist, 'name' : 'Concepts', 'id' : "None" })
 
-    #
-	# c = Context({
-	# 				"ontology": ontology,
-	# 				"main_uri" : uri,
-	# 				"STATIC_PATH": ONTODOCS_VIZ_STATIC,
-	# 				"save_on_github" : save_on_github,
-	# 				"classes": graph.classes,
-	# 				"classes_TOPLAYER": len(graph.toplayer),
-	# 				"properties": graph.properties,
-	# 				"properties_TOPLAYER": len(graph.toplayerProperties),
-	# 				"skosConcepts": graph.skosConcepts,
-	# 				"skosConcepts_TOPLAYER": len(graph.toplayerSkosConcepts),
-	# 				"TOTAL_CLASSES": c_total,
-	# 				"TOTAL_PROPERTIES": p_total,
-	# 				"TOTAL_CONCEPTS": s_total,
-	# 				'JSON_DATA_CLASSES' : JSON_DATA_CLASSES,
-	# 				'JSON_DATA_PROPERTIES' : JSON_DATA_PROPERTIES,
-	# 				'JSON_DATA_CONCEPTS' : JSON_DATA_CONCEPTS,
-	# 			})
-    #
-    #
-
         extra_context = {
                         "ontograph": self.ontospy_graph,
     					"TOTAL_CLASSES": c_total,
