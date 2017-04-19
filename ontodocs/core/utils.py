@@ -70,6 +70,64 @@ def truncchar_inverse(value, arg):
 
 
 
+
+def build_D3bubbleChart(old, MAX_DEPTH, level=1, toplayer=None):
+	"""
+	  Similar to standar d3, but nodes with children need to be duplicated otherwise they are
+	   not depicted explicitly but just color coded
+
+	"name": "all",
+	"children": [
+		{"name": "Biological Science", "size": 9000},
+		 {"name": "Biological Science", "children": [
+			 {"name": "Biological techniques", "size": 6939},
+			{"name": "Cell biology", "size": 4166},
+			{"name": "Drug discovery X", "size": 3620, "children": [
+				{"name": "Biochemistry X", "size": 4585},
+				{"name": "Biochemistry X", "size": 4585 },
+			]},
+			{"name": "Drug discovery Y", "size": 3620, "children": [
+				{"name": "Biochemistry Y", "size": 4585},
+				{"name": "Biochemistry Y", "size": 4585 },
+			]},
+			{"name": "Drug discovery A", "size": 3620, "children": [
+				{"name": "Biochemistry A", "size": 4585},
+			]},
+			{"name": "Drug discovery B", "size": 3620, },
+		 ]},
+		etc...
+	"""
+	out = []
+	if not old:
+		old = toplayer
+	for x in old:
+		d = {}
+		# print "*" * level, x.label
+		d['qname'] = x.qname
+		d['name'] = x.bestLabel(quotes=False).replace("_", " ")
+		d['objid'] = x.id
+		if x.children() and level < MAX_DEPTH:
+			duplicate_row = {}
+			duplicate_row['qname'] = x.qname
+			duplicate_row['name'] = x.bestLabel(quotes=False).replace("_", " ")
+			duplicate_row['objid'] = x.id
+			duplicate_row['size'] = len(x.children()) + 5	 # fake size
+			duplicate_row['realsize'] = len(x.children())        # real size
+			out += [duplicate_row]
+			d['children'] = build_D3bubbleChart(x.children(), MAX_DEPTH, level+1)
+		else:
+			d['size'] = 1	 # default size
+			d['realsize'] = 0	 # default size
+		out += [d]
+
+	return out
+
+
+
+
+
+
+
 ##################
 #
 #  TREE DISPLAY FUNCTIONS [from ontospy web]
