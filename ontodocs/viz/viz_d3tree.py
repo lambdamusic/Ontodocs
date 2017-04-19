@@ -98,7 +98,7 @@ class D3TreeViz(VizFactory):
                         }
 
         # Ontology - MAIN PAGE
-        contents = self._renderTemplate("misc/d3tree.html", extraContext=extra_context)
+        contents = self._renderTemplate("d3/d3tree.html", extraContext=extra_context)
         FILE_NAME = "index.html"
         main_url = self._save2File(contents, FILE_NAME, self.output_path)
 
