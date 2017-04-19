@@ -14,9 +14,7 @@ from ontospy.core.utils import *
 
 from .. import *
 
-# from ..core.utils import *
-# from ..core.manager import *
-# from ..core.actions import *
+
 
 # Fix Python 2.x.
 try:
@@ -44,8 +42,9 @@ if StrictVersion(django.get_version()) > StrictVersion('1.7'):
             'DIRS': [
                 # insert your TEMPLATE_DIRS here
                 ONTODOCS_VIZ_TEMPLATES + "html-simple",
-                ONTODOCS_VIZ_TEMPLATES + "markdown",
                 ONTODOCS_VIZ_TEMPLATES + "html-multi",
+                ONTODOCS_VIZ_TEMPLATES + "markdown",
+                ONTODOCS_VIZ_TEMPLATES + "d3",
                 ONTODOCS_VIZ_TEMPLATES + "misc",
             ],
             'APP_DIRS': True,
@@ -219,7 +218,7 @@ def build_visualization(ontouri, g, viz_index, path=None, title="", theme=""):
 
     elif this_viz['ID'] == "d3-tree":
         from ..viz.viz_d3tree import D3TreeViz
-        v = D3TreeViz(g, title, theme)
+        v = D3TreeViz(g, title)
 
     else:
         return False
@@ -233,6 +232,10 @@ def build_visualization(ontouri, g, viz_index, path=None, title="", theme=""):
 
 
 
+
+
+
+# ?LEGACY
 
 
 def saveVizGithub(contents, ontouri):
