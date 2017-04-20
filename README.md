@@ -3,6 +3,14 @@ Ontodocs
 
 Ontodocs is a Python command line application aimed at facilitating the creation of documentation for ontologies encoded in RDF/OWL.
 
+Installation
+------------
+
+```
+pip install ontodocs -U
+```
+
+
 Description
 ------------
 
