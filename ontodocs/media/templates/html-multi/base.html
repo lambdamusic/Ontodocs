@@ -282,8 +282,10 @@ $('#search-input-sidebar').keyup(function() {
 
 {% if main_entity %}
   <!-- Scroll Sidebar Script -->
+
   {# Convention is to have sidebar menu li items with id "sd_XXXX"#}
   {# Entity pages get the script below - other pages need duplication unfortunately #}
+
   <script type="text/javascript">
 
     $(document).ready(function (){
@@ -292,6 +294,14 @@ $('#search-input-sidebar').keyup(function() {
       }, 100);
     });
 
+  </script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#menu-toggle").click();
+    });
   </script>
 
 {% endif %}

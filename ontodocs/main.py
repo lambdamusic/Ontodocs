@@ -17,10 +17,14 @@ import click
 # http://click.pocoo.org/5/options/
 
 from ontospy.core import manager as ontospy_manager
+from ontospy import VERSION as ontospy_VERSION
 
 from . import *
 from .core.builder import *
 
+
+# http://stackoverflow.com/questions/1714027/version-number-comparison
+from distutils.version import StrictVersion
 
 
 
@@ -43,9 +47,19 @@ E.g.:
 
 ==> generates html docs for the SKOS ontology and save it to your desktop
 """
+
+
+    if StrictVersion(ontospy_VERSION.replace("v", "")) < StrictVersion('1.8'):
+        click.secho("WARNING: OntoDocs requires OntoSpy >= v1.8 but it looks like you have installed %s." % ontospy_VERSION, fg="red")
+        sys.exit(0)
+
     sTime = time.time()
     ontospy_manager.get_or_create_home_repo()
-    click.secho("Ontodocs " + VERSION,  bold=True)
+    click.echo(click.style("OntoDocs " + VERSION, bold=True) + click.style(" (OntoSpy " + ontospy_VERSION + ")", fg='white'))
+
+    # click.secho("OntoDocs " + VERSION,  bold=True)
+    # click.secho("OntoSpy " + ontospy_VERSION)
+    # click.echo(click.style('Hello World!', fg='green') + click.style('Hello World!', fg='red'))
     # click.secho("Local library: '%s'" % get_home_location(), fg='white')
     click.secho("------------", fg='white')
 
