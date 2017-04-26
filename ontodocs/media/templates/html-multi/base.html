@@ -57,7 +57,7 @@
 
   .implementation-panel {
     overflow: auto;
-    max-height: 500px;
+    /*max-height: 500px;*/
   }
 
   tr.table-classproperties {
@@ -189,8 +189,9 @@
 {% endblock navbar %}
 
 
-{# {% if thispage != "home" %}class="toggled"{% endif %}#}
-<div id="wrapper" >
+{# SIDEBAR OPEN CLOSE operates from here with class="toggled" #}
+
+<div id="wrapper" {% if not index_page_flag  %}class="toggled"{% endif %}>
 
 
     {% block sidebar %}
@@ -294,14 +295,6 @@ $('#search-input-sidebar').keyup(function() {
       }, 100);
     });
 
-  </script>
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $("#menu-toggle").click();
-    });
   </script>
 
 {% endif %}

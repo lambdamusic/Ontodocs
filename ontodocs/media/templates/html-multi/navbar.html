@@ -24,7 +24,6 @@
 
 
         <li {% ifequal thispage "dashboard" %}class="active"{% endifequal %} ><a href="dashboard.html">Dashboard</a></li>
-        <li {% ifequal thispage "entities-az" %}class="active"{% endifequal %} ><a href="entities-az.html">Entities A-Z</a></li>
         {% if ontospy_graph.classes %}
         <li {% ifequal thispage "classes" %}class="active"{% endifequal %}><a href="entities-tree-classes.html">Classes Tree</a></li>
         {% endif %}
@@ -34,6 +33,7 @@
         {% if ontospy_graph.skosConcepts %}
         <li {% ifequal thispage "concepts" %}class="active"{% endifequal %}><a href="entities-tree-concepts.html">SKOS Tree</a></li>
         {% endif %}
+        <li {% ifequal thispage "entities-az" %}class="active"{% endifequal %} ><a href="entities-az.html">Entities A-Z</a></li>
 
 {% if 0 %}
         <li class="dropdown {% if thispage == "classes" or thispage == "properties" or thispage == "concepts" %}active{% endif %} " >
