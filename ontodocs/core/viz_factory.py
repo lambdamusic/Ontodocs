@@ -181,7 +181,7 @@ class VizFactory(object):
 
         context_data = {
             "STATIC_URL": self.static_url,
-            "ontospy_version": VERSION,
+            "ontodocs_version": VERSION,
             "ontospy_graph": self.ontospy_graph,
             "docs_title": self.title,
             "namespaces": self.ontospy_graph.namespaces,
