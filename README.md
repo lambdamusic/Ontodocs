@@ -3,6 +3,15 @@ Ontodocs
 
 Ontodocs is a Python command line application aimed at facilitating the creation of documentation for ontologies encoded in RDF/OWL.
 
+Example
+------------
+
+- [Schema.org](http://www.michelepasin.org/support/ontospy-examples/schema_org_topbraidttl/index.html)
+- [FOAF](http://www.michelepasin.org/support/ontospy-examples/foafrdf/index.html)
+
+This is the kind of documentation OntoDocs can generate out-of-the-box. For even more examples,  [take a look at this page](http://www.michelepasin.org/support/ontospy-examples/index.html). 
+
+
 Installation
 ------------
 
@@ -42,7 +51,7 @@ Options:
 
 The library is not really meant to be used programmatically, but I'm sure there are a few constructs in there which can be reused.
 
-In a nutshell, all visualizations inherited from a [VizFactory](https://github.com/lambdamusic/Ontodocs/blob/master/ontodocs/core/viz_factory.py) class that abstracts away the most common operations involved in rendering a dataviz.
+In a nutshell, all visualizations inherit from a [VizFactory](https://github.com/lambdamusic/Ontodocs/blob/master/ontodocs/core/viz_factory.py) class that abstracts away the most common operations involved in rendering a dataviz.
 
 This is how you would invoke a visualization from a script:
 
@@ -57,15 +66,6 @@ v.build() # => render visualization. You can pass an 'output_path' parameter too
 v.preview() # => open in browser
 
 ```
-
-
-
-### Example outputs
-
-For some examples of what the outputs visualizations look like, please see this link:
-
-- http://www.michelepasin.org/support/ontospy-examples/index.html
-
 
 
 Dependencies
