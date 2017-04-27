@@ -41,7 +41,7 @@ if StrictVersion(django.get_version()) > StrictVersion('1.7'):
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [
                 # insert your TEMPLATE_DIRS here
-                ONTODOCS_VIZ_TEMPLATES + "html-simple",
+                ONTODOCS_VIZ_TEMPLATES + "html-single",
                 ONTODOCS_VIZ_TEMPLATES + "html-multi",
                 ONTODOCS_VIZ_TEMPLATES + "markdown",
                 ONTODOCS_VIZ_TEMPLATES + "d3",

@@ -10,7 +10,7 @@
 
 
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 __copyright__ = "CopyRight (C) 2015-2017 by Michele Pasin"
 __license__ = "GNU"
