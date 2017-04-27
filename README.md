@@ -3,13 +3,12 @@ Ontodocs
 
 Ontodocs is a Python command line application aimed at facilitating the creation of documentation for ontologies encoded in RDF/OWL.
 
-Example
-------------
+#### Examples
 
-- [Schema.org](http://www.michelepasin.org/support/ontospy-examples/schema_org_topbraidttl/index.html)
-- [FOAF](http://www.michelepasin.org/support/ontospy-examples/foafrdf/index.html)
+- [Schema.org](http://www.michelepasin.org/support/ontospy-examples/schema_org_topbraidttl/index.html) documentation.
+- [FOAF](http://www.michelepasin.org/support/ontospy-examples/foafrdf/index.html) documentation.
 
-This is the kind of documentation OntoDocs can generate out-of-the-box. For even more examples,  [take a look at this page](http://www.michelepasin.org/support/ontospy-examples/index.html). 
+That's the kind of documentation OntoDocs can generate out-of-the-box. For even more examples,  [take a look at this page](http://www.michelepasin.org/support/ontospy-examples/index.html). 
 
 
 Installation
