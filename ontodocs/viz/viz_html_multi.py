@@ -48,8 +48,8 @@ class KompleteViz(VizFactory):
         main_url = self._save2File(contents, FILE_NAME, self.output_path)
 
         # DASHBOARD
-        contents = self._renderTemplate("html-multi/dashboard.html", extraContext={"theme": self.theme})
-        FILE_NAME = "dashboard.html"
+        contents = self._renderTemplate("html-multi/statistics.html", extraContext={"theme": self.theme})
+        FILE_NAME = "statistics.html"
         self._save2File(contents, FILE_NAME, self.output_path)
 
         # VIZ LIST
