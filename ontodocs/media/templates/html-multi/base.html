@@ -189,9 +189,12 @@
 {% endblock navbar %}
 
 
-{# SIDEBAR OPEN CLOSE operates from here with class="toggled" #}
+{# SIDEBAR OPEN CLOSE operates from here with class="toggled" when closed #}
 
-<div id="wrapper" {% if not index_page_flag  %}class="toggled"{% endif %}>
+{# previous version: #}
+{# <div id="wrapper" {% if not index_page_flag  %}class="toggled"{% endif %}>#}
+
+<div id="wrapper" class="toggled">
 
 
     {% block sidebar %}
