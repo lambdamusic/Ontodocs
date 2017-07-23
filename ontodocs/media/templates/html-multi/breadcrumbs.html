@@ -89,6 +89,21 @@
 
 
 
+{% if thispage == "shapes" %}
+<ol class="breadcrumb">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+        <a href="entities-az.html">Entities</a>
+    </li>
+    <li class="active">
+          Concepts
+      </li>
+</ol>
+{% endif %}
+
+
 {# SPECIFIC ENTITY INFO #}
 
 
@@ -153,6 +168,28 @@
     </li>
     <li>
           <a href="entities-tree-concepts.html">Concepts</a>
+    </li>
+      <li class="active">
+            {{each.uri}}
+        </li>
+  </ol>
+
+{% endif %}
+
+
+
+{% if thispage == "shapeinfo" %}
+
+
+  <ol class="breadcrumb">
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+    <li>
+          <a href="entities-az.html">Entities</a>
+    </li>
+    <li>
+          <a href="entities-tree-shapes.html">Shapes</a>
     </li>
       <li class="active">
             {{each.uri}}
