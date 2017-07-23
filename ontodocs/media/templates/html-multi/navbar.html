@@ -25,13 +25,16 @@
 
         <li {% ifequal thispage "entities-az" %}class="active"{% endifequal %} ><a href="entities-az.html">Entities A-Z</a></li>
         {% if ontospy_graph.classes %}
-        <li {% ifequal thispage "classes" %}class="active"{% endifequal %}><a href="entities-tree-classes.html">Classes Tree</a></li>
+        <li {% ifequal thispage "classes" %}class="active"{% endifequal %}><a href="entities-tree-classes.html">Classes</a></li>
         {% endif %}
         {% if ontospy_graph.properties %}
-        <li {% ifequal thispage "properties" %}class="active"{% endifequal %}><a href="entities-tree-properties.html">Properties Tree</a></li>
+        <li {% ifequal thispage "properties" %}class="active"{% endifequal %}><a href="entities-tree-properties.html">Properties</a></li>
         {% endif %}
         {% if ontospy_graph.skosConcepts %}
-        <li {% ifequal thispage "concepts" %}class="active"{% endifequal %}><a href="entities-tree-concepts.html">SKOS Tree</a></li>
+        <li {% ifequal thispage "concepts" %}class="active"{% endifequal %}><a href="entities-tree-concepts.html">SKOS</a></li>
+        {% endif %}
+        {% if ontospy_graph.shapes %}
+        <li {% ifequal thispage "shapes" %}class="active"{% endifequal %}><a href="entities-tree-shapes.html">Shapes</a></li>
         {% endif %}
         <li {% ifequal thispage "statistics" %}class="active"{% endifequal %} ><a href="statistics.html">Statistics</a></li>
 

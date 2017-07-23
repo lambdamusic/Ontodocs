@@ -25,14 +25,14 @@
 
 
 
-{% ifequal main_entity_type "class"  %}
+{% ifequal main_entity_type "shape"  %}
 
         {% with main_entity as each  %}
 
 
 
 
-        {% with thispage="classinfo" %}
+        {% with thispage="shapeinfo" %}
             {% include "breadcrumbs.html" %}
         {% endwith %}
 
@@ -80,7 +80,7 @@
 
                     {% else %}
 
-                        <li><a href="entities-tree-classes.html">owl:Thing</a>
+                        <li><a href="entities-tree-classes.html">sh:Shape</a>
 
                           <ul>
                             <li><a style="font-weight: bold;" title="'{{each.bestLabel}}'{% if each.bestDescription %} - {{each.bestDescription|truncatewords:20}}{% endif %}">{{each.qname}}</a>
@@ -169,99 +169,21 @@
            {% endif %}
 
 
-
-          {% if each.shapes %}
-           <div class="row"><div class="col-md-12">
-             <div class="panel panel-default">
-           <div class="panel-heading">
-             <h3 class="panel-title">Shapes ({{each.shapes|length}})</h3>
-           </div>
-           <div class="panel-body">
-
-
-             {% for s in each.shapes %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
-
-
-           </div>
-         </div>
-          </div></div>
-          {% endif %}
-
-
-
-         {% if each.domain_of_inferred %}
-           <div class="row"><div class="col-md-12">
+           {% if each.targetClasses %}
+            <div class="row"><div class="col-md-12">
               <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Usage</h3>
+              <h3 class="panel-title">Target Classes ({{each.targetClasses|length}})</h3>
             </div>
-            <div class="panel-body" style="overflow: auto;">
+            <div class="panel-body">
 
-                <p>Instances of {{each.qname}} can have the following properties:</p>
+              {% for s in each.targetClasses %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
+
+
             </div>
-             <table class="table table-bordered" style="overflow: auto;">
-
-                <tr class="table-classproperties">
-                    <th>PROPERTY</th><th>TYPE</th><th>DESCRIPTION</th><th>RANGE</th>
-                </tr>
-
-                {% for group in each.domain_of_inferred  %}
-
-                    {% for k,v in group.items  %}
-
-                    {% if v %}
-
-                        <tr class="table-inheritanceinfo">
-                            <th colspan="4" class="treeinfo"><span class="label label-default">From class <a title="{{k.qname}}" href="{{k.slug}}.html" class="fromclass_link">{{k.qname}}</a></span>
-                            </th>
-                        </tr>
-
-                            {% for prop in v  %}
-                            <tr>
-                                <td class="firsttd">
-                                    <a class="propcolor" title="{{prop.qname}}" href="{{prop.slug}}.html">{{prop.qname}}</a>
-                                </td>
-                                <td class="secondtd">
-                                    <i>{{prop.rdftype_qname}}<i>
-                                </td>
-                                <td class="thirdtd">
-                                    <span>{{prop.bestDescription|default:"--"}}</span>
-                                </td>
-                                <td class="fourthtd">
-                                    {% if  prop.ranges %}
-                                    {% for range in prop.ranges  %}
-
-                                        {% if not range.ext_model %}
-                                          <a title="{{range.qname}}" href="{{range.slug}}.html" class="rdfclass">{{range.qname}}</a>
-                                        {% else %}
-                                          <i>{{range.qname}}</i>
-                                        {% endif %}
-
-
-                                    {% endfor %}
-                                    {% else %}
-                                        <i>owl:Thing</i>
-                                    {% endif %}
-                                </td>
-                            </tr>
-
-                            {% endfor %}
-
-                    {% endif %}
-
-                    {% endfor %}
-
-                {% endfor %}
-
-            </table>
-
-
           </div>
            </div></div>
-
-        {% endif %}
-
-
+           {% endif %}
 
 
 

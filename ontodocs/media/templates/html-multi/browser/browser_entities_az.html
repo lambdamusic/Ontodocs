@@ -138,6 +138,34 @@
 
 
 
+       {% if ontospy_graph.shapes %}
+          <div class="row">
+            <div class="col-md-12">
+              <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Shapes ({{ ontospy_graph.shapes|length }})</h3>
+            </div>
+            <div class="panel-body entities-list" style="overflow: auto;">
+               <dl>
+
+               {% for each in ontospy_graph.shapes  %}
+                   <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
+                   <dd>
+{#                           {{ each.bestDescription|default:"[no definition]" }}#}
+                   </dd>
+
+               {% endfor %}
+
+              </dl>
+            </div>
+          </div>
+            </div>
+          </div>
+    {% endif %}
+
+
+
+
         </div>
          {# END second column #}
 

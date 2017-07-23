@@ -92,6 +92,8 @@ class VizFactory(object):
         self.output_path = self.checkOutputPath(output_path)
         self._buildStaticFiles()
         self.final_url = self._buildTemplates()
+        printDebug("Done.", "comment")
+        printDebug("=> %s" % (self.final_url), "comment")
         return self.final_url
 
     def _buildTemplates(self):

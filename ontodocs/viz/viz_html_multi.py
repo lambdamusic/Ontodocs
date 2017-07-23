@@ -139,6 +139,30 @@ class KompleteViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
+        if self.ontospy_graph.shapes:
+
+            # SHAPES = ENTITIES TREE
+
+            extra_context = {"ontograph": self.ontospy_graph, "theme": self.theme,
+                            "treetype" : "shapes", 'treeTable' : formatHTML_EntityTreeTable(self.ontospy_graph.ontologyShapeTree()) }
+            contents = self._renderTemplate("html-multi/browser/browser_entities_tree.html", extraContext=extra_context)
+            FILE_NAME = "entities-tree-shapes.html"
+            self._save2File(contents, FILE_NAME, browser_output_path)
+
+            # BROWSER PAGES - SHAPES ======
+
+            for entity in self.ontospy_graph.shapes:
+                extra_context = {"main_entity": entity,
+                                "main_entity_type": "shape",
+                                "theme": self.theme,
+                                "ontograph": self.ontospy_graph
+                                }
+                extra_context.update(self.highlight_code(entity))
+                contents = self._renderTemplate("html-multi/browser/browser_shapeinfo.html", extraContext=extra_context)
+                FILE_NAME = entity.slug + ".html"
+                self._save2File(contents, FILE_NAME, browser_output_path)
+
+
         return main_url
 
 
