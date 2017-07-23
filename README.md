@@ -8,7 +8,7 @@ Ontodocs is a Python command line application aimed at facilitating the creation
 - [Schema.org](http://www.michelepasin.org/support/ontospy-examples/schema_org_topbraidttl/index.html) documentation.
 - [FOAF](http://www.michelepasin.org/support/ontospy-examples/foafrdf/index.html) documentation.
 
-That's the kind of documentation OntoDocs can generate out-of-the-box. For even more examples,  [take a look at this page](http://www.michelepasin.org/support/ontospy-examples/index.html). 
+That's the kind of documentation OntoDocs can generate out-of-the-box. For even more examples,  [take a look at this page](http://www.michelepasin.org/support/ontospy-examples/index.html).
 
 
 Installation
@@ -72,3 +72,11 @@ Dependencies
 Ontodocs relies on the [OntoSpy](https://github.com/lambdamusic/Ontospy/wiki) library, which itself relies on [Rdflib](https://github.com/RDFLib/rdflib).
 
 > note: the functionalities of Ontodocs used to be part of OntoSpy until v1.8.
+
+
+Changelog
+---------------
+
+### 2017-07-23
+- added support for SHACL shapes
+- datatype/object properties info listed on class domain/range table
