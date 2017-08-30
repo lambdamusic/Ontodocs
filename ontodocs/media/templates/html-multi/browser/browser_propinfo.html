@@ -201,7 +201,11 @@
                    <td>
                      {% if each.domains %}
                          {% for s in each.domains %}
-                           <a href="{{s.slug}}.html">{{s.qname|default:s}}</a>
+                         {% if s.ext_model %}
+                              <a href="{{s.uri}}" target="_blank" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                           {% else  %}
+                              <a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                           {% endif %}
                            {% if not forloop.last %}, {% endif %}
                          {% endfor %}
                      {% else %}
@@ -216,7 +220,11 @@
                     <td>
                       {% if each.ranges %}
                           {% for s in each.ranges %}
-                            <a href="{{s.slug}}.html">{{s.qname|default:s}}</a>
+                          {% if s.ext_model %}
+                               <a href="{{s.uri}}" target="_blank" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                            {% else  %}
+                               <a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                            {% endif %}
                             {% if not forloop.last %}, {% endif %}
                           {% endfor %}
                       {% else %}
