@@ -77,6 +77,9 @@ Ontodocs relies on the [OntoSpy](https://github.com/lambdamusic/Ontospy/wiki) li
 Changelog
 ---------------
 
+### 2017-08-30 (v1.1.2)
+- fixed error with Blank nodes
+
 ### 2017-07-23
 - added support for SHACL shapes
 - datatype/object properties info listed on class domain/range table
