@@ -154,7 +154,7 @@
                     <div class="panel-body">
 
                     {% if each.ancestors %}
-                            {% for s in each.ancestors %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
+                            {% for s in each.ancestors %}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
                     {% else %}
                         <li>owl:Thing</li>
                     {% endif %}
@@ -176,7 +176,7 @@
                   </div>
                   <div class="panel-body">
 
-                      {% for s in each.children %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
+                      {% for s in each.children %}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
 
 
                   </div>
@@ -203,6 +203,8 @@
                          {% for s in each.domains %}
                          {% if s.ext_model %}
                               <a href="{{s.uri}}" target="_blank" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                           {% elif s.is_Bnode  %}
+                              <a>Blank node</a> (see implementation)
                            {% else  %}
                               <a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname|default:s}}</a>
                            {% endif %}
@@ -222,6 +224,8 @@
                           {% for s in each.ranges %}
                           {% if s.ext_model %}
                                <a href="{{s.uri}}" target="_blank" title="{{s.uri}}">{{s.qname|default:s}}</a>
+                             {% elif s.is_Bnode  %}
+                                <a>Blank node</a> (see implementation)
                             {% else  %}
                                <a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname|default:s}}</a>
                             {% endif %}

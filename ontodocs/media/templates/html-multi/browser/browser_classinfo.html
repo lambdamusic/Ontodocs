@@ -158,7 +158,7 @@
             <div class="panel-body">
 
             {% if each.ancestors %}
-                    {% for s in each.ancestors %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
+                    {% for s in each.ancestors %}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
             {% else %}
                 <li>owl:Thing</li>
             {% endif %}
@@ -179,7 +179,7 @@
            <div class="panel-body">
 
 
-             {% for s in each.shapes %}<li><a href="{{s.slug}}.html">{{s.qname}}</a></li>{% endfor %}
+             {% for s in each.shapes %}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
 
 
            </div>
