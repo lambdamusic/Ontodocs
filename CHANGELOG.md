@@ -3,6 +3,19 @@ Changelog
 
 Changelog.
 
+> note: change all h1 headers with ### 
+
+
+2017-08-30
+---------------------------------
+- v1.1.2
+- fixed error with Blank nodes
+
+2017-07-23
+---------------------------------
+- added support for SHACL shapes
+- datatype/object properties info listed on class domain/range table
+
 
 
 April 26, 2017
