@@ -41,6 +41,17 @@
 		}
 
 
+		.bde {
+			background: yellow; 
+			font-size: 21px; 
+			font-family: monospace;
+			display: inline;
+		}
+
+		.divider {
+			background: white;
+		}
+
 </style>
 
 
@@ -64,8 +75,15 @@
 	{% if TOTAL_CLASSES %}
 		<div class="row">
 			<h3>Classes ({{TOTAL_CLASSES}})</h3>
-			<div class="col-md-12" id="graph_classes" style="margin-top: 10px;">
 
+
+			<div id="breadcrumbs">You are here: 
+				<li class="bde">Owl:Thing</li>
+			</div>
+
+
+
+			<div class="col-md-12" id="graph_classes" style="margin-top: 10px;">
 
 			</div>
 
@@ -137,8 +155,34 @@
 	  down(root, 0);
 	// });
 
+
+
+	function say_position(d, direction) {
+		// 2017-11-17 
+
+		console.log(direction);
+
+		if (direction == "up") {
+
+			$("#breadcrumbs li:last").remove();
+
+		} else if (direction == "down")  {
+
+			if (d.parent) {
+				var t = "<li class='bde'><span class='divider'> &gt; </span>" + d.qname||d.name + "</li>"
+				$("#breadcrumbs").append(t)
+			}
+		}
+		
+	}
+
+
+
 	function down(d, i) {
 	  if (!d.children || this.__transition__) return;
+	  
+	  say_position(d, "down");
+
 	  var duration = d3.event && d3.event.altKey ? 7500 : 750,
 	      delay = duration / d.children.length;
 
@@ -197,6 +241,9 @@
 
 	function up(d) {
 	  if (!d.parent || this.__transition__) return;
+
+	  say_position(d, "up");
+
 	  var duration = d3.event && d3.event.altKey ? 7500 : 750,
 	      delay = duration / d.children.length;
 
