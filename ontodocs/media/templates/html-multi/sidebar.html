@@ -29,12 +29,12 @@
 
         {% endif %}
 
-        {% if ontospy_graph.all_skos  %}
-            <li class="-second-level" id="sd_concepts"><a {% ifequal thispage "concepts" %}class="active"{% endifequal %}href="entities-tree-concepts.html">Concepts ({{ontospy_graph.all_skos|length}})</a>
+        {% if ontospy_graph.all_skos_concepts  %}
+            <li class="-second-level" id="sd_concepts"><a {% ifequal thispage "concepts" %}class="active"{% endifequal %}href="entities-tree-concepts.html">Concepts ({{ontospy_graph.all_skos_concepts|length}})</a>
             </li>
 
               {# simulated second level #}
-            {% for each in  ontospy_graph.all_skos %}
+            {% for each in  ontospy_graph.all_skos_concepts %}
                 <li class="second-level" style="line-height: 20px;" id="sd_{{each.id}}"><a {% ifequal thispage each.qname %}class="active"{% endifequal %}  href="{{each.slug}}.html">{{each.qname}}</a></li>
             {% endfor %}
 

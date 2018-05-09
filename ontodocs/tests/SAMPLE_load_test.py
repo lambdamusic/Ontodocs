@@ -45,7 +45,7 @@
 # 				for p in o.all_properties:
 # 					p.describe()
 #
-# 				for s in o.all_skos:
+# 				for s in o.all_skos_concepts:
 # 					s.describe()
 #
 # 				# self.assertEqual(type(o), ontospy.Ontology)

@@ -174,7 +174,7 @@ def run(graph, save_on_github=False, main_entity=None):
 
         c_total = len(graph.classes)
         p_total = len(graph.all_properties)
-        s_total = len(graph.all_skos)
+        s_total = len(graph.all_skos_concepts)
 
         # hack to make sure that we have a default top level object
         JSON_DATA_CLASSES = json.dumps({'children' : c_mylist, 'name' : 'owl:Thing', 'id' : "None" })
@@ -190,7 +190,7 @@ def run(graph, save_on_github=False, main_entity=None):
                     "classes_TOPLAYER": len(graph.toplayer_classes),
                     "properties": graph.all_properties,
                     "properties_TOPLAYER": len(graph.toplayer_properties),
-                    "skosConcepts": graph.all_skos,
+                    "skosConcepts": graph.all_skos_concepts,
                     "skosConcepts_TOPLAYER": len(graph.toplayer_skos),
                     # "TOTAL_CLASSES": c_total,
                     # "TOTAL_PROPERTIES": p_total,

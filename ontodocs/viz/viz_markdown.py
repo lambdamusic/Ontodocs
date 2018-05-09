@@ -70,10 +70,10 @@ class MarkdownViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
-        if self.ontospy_graph.all_skos:
+        if self.ontospy_graph.all_skos_concepts:
 
             # BROWSER PAGES - CONCEPTS ======
-            for entity in self.ontospy_graph.all_skos:
+            for entity in self.ontospy_graph.all_skos_concepts:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "concept",
                                 "ontograph": self.ontospy_graph

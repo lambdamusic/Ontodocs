@@ -46,7 +46,7 @@ class D3TreeViz(VizFactory):
 
         c_total = len(self.ontospy_graph.all_classes)
         p_total = len(self.ontospy_graph.all_properties)
-        s_total = len(self.ontospy_graph.all_skos)
+        s_total = len(self.ontospy_graph.all_skos_concepts)
 
 
         if False:

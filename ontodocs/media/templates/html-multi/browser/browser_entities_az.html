@@ -73,17 +73,17 @@
 
 
 
-           {% if ontospy_graph.all_skos %}
+           {% if ontospy_graph.all_skos_concepts %}
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Concepts ({{ ontospy_graph.all_skos|length }})</h3>
+                  <h3 class="panel-title">Concepts ({{ ontospy_graph.all_skos_concepts|length }})</h3>
                 </div>
                 <div class="panel-body entities-list" style="overflow: auto;">
                    <dl>
 
-                   {% for each in ontospy_graph.all_skos  %}
+                   {% for each in ontospy_graph.all_skos_concepts  %}
                        <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
                        <dd>
 {#                           {{ each.bestDescription|default:"[no definition]" }}#}

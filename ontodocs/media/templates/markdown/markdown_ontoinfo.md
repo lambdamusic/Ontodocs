@@ -57,10 +57,10 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if ontospy_graph.all_skos %}
-#### SKOS Concepts ({{ontospy_graph.all_skos|length}})
+{% if ontospy_graph.all_skos_concepts %}
+#### SKOS Concepts ({{ontospy_graph.all_skos_concepts|length}})
 
-{% for each in ontograph.all_skos  %}
+{% for each in ontograph.all_skos_concepts  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
