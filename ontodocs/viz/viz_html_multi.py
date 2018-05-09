@@ -139,7 +139,7 @@ class KompleteViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
-        if self.ontospy_graph.shapes:
+        if self.ontospy_graph.all_shapes:
 
             # SHAPES = ENTITIES TREE
 
@@ -151,7 +151,7 @@ class KompleteViz(VizFactory):
 
             # BROWSER PAGES - SHAPES ======
 
-            for entity in self.ontospy_graph.shapes:
+            for entity in self.ontospy_graph.all_shapes:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "shape",
                                 "theme": self.theme,
