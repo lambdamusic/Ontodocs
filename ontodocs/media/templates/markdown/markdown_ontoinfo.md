@@ -68,7 +68,7 @@ Prefix   | URI      |
 
 
 {% if ontospy_graph.all_properties_object%}
-#### Object Properties ({{ontospy_graph.objectProperties|length}})
+#### Object Properties ({{ontospy_graph.all_properties_object|length}})
 
 {% for each in ontospy_graph.all_properties_object %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
