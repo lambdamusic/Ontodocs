@@ -87,17 +87,17 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if ontospy_graph.annotationProperties %}
-#### Annotation Properties ({{ontograph.annotationProperties|length}})
+{% if ontospy_graph.all_properties_annotations %}
+#### Annotation Properties ({{ontograph.all_properties_annotations|length}})
 
-{% for each in ontospy_graph.annotationProperties  %}
+{% for each in ontospy_graph.all_properties_annotations  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if not ontospy_graph.all_properties_objectand not ontospy_graph.dataProperties and not ontospy_graph.annotationProperties %}
+{% if not ontospy_graph.all_properties_objectand not ontospy_graph.dataProperties and not ontospy_graph.all_properties_annotations %}
 {% if ontospy_graph.all_properties %}
 #### Properties ({{ontospy_graph.all_properties|length}})
 

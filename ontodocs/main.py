@@ -80,12 +80,7 @@ E.g.:
     if not source:
         # ask to show local library
         click.secho("You haven't specified any argument.", fg='red')
-        if click.confirm('Select an ontology from the local OntoSpy library?'):
-            pass
-        else:
-            printDebug("Goodbye (tip: use -h for more options).", "comment")
-            raise SystemExit(1)
-
+        click.secho("Please select an ontology from the local OntoSpy library.")
 
     if source and len(source) > 1:
         click.secho('Note: currently only one argument can be passed', fg='red')
