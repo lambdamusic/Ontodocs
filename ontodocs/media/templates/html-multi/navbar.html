@@ -24,16 +24,16 @@
 
 
         <li {% ifequal thispage "entities-az" %}class="active"{% endifequal %} ><a href="entities-az.html">Entities A-Z</a></li>
-        {% if ontospy_graph.classes %}
+        {% if ontospy_graph.all_classes%}
         <li {% ifequal thispage "classes" %}class="active"{% endifequal %}><a href="entities-tree-classes.html">Classes</a></li>
         {% endif %}
-        {% if ontospy_graph.properties %}
+        {% if ontospy_graph.all_properties %}
         <li {% ifequal thispage "properties" %}class="active"{% endifequal %}><a href="entities-tree-properties.html">Properties</a></li>
         {% endif %}
-        {% if ontospy_graph.skosConcepts %}
+        {% if ontospy_graph.all_skos %}
         <li {% ifequal thispage "concepts" %}class="active"{% endifequal %}><a href="entities-tree-concepts.html">SKOS</a></li>
         {% endif %}
-        {% if ontospy_graph.shapes %}
+        {% if ontospy_graph.all_shapes%}
         <li {% ifequal thispage "shapes" %}class="active"{% endifequal %}><a href="entities-tree-shapes.html">Shapes</a></li>
         {% endif %}
         <li {% ifequal thispage "statistics" %}class="active"{% endifequal %} ><a href="statistics.html">Statistics</a></li>
@@ -43,15 +43,15 @@
         <li class="dropdown {% if thispage == "classes" or thispage == "properties" or thispage == "concepts" %}active{% endif %} " >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entities Tree <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            {% if ontospy_graph.classes %}
+            {% if ontospy_graph.all_classes%}
             <li><a {% ifequal thispage "classes" %}class="active"{% endifequal %}href="entities-tree-classes.html">Classes</a>
             </li>
             {% endif %}
-            {% if ontospy_graph.properties %}
+            {% if ontospy_graph.all_properties %}
             <li><a {% ifequal thispage "properties" %}class="active"{% endifequal %} href="entities-tree-properties.html">Properties</a>
             </li>
             {% endif %}
-            {% if ontospy_graph.skosConcepts %}
+            {% if ontospy_graph.all_skos %}
             <li><a {% ifequal thispage "concepts" %}class="active"{% endifequal %}href="entities-tree-concepts.html">Concepts</a>
             </li>
             {% endif %}

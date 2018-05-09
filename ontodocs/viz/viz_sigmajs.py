@@ -153,7 +153,7 @@ def run(graph, save_on_github=False, main_entity=None):
     """
 
     try:
-        ontology = graph.ontologies[0]
+        ontology = graph.all_ontologies[0]
         uri = ontology.uri
     except:
         ontology = None
@@ -170,7 +170,7 @@ def run(graph, save_on_github=False, main_entity=None):
     if False:
         c_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer)
         p_mylist = build_D3treeStandard(0, 99, 1, graph.toplayerProperties)
-        s_mylist = build_D3treeStandard(0, 99, 1, graph.toplayerSkosConcepts)
+        s_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer_skos)
 
         c_total = len(graph.classes)
         p_total = len(graph.properties)
@@ -191,7 +191,7 @@ def run(graph, save_on_github=False, main_entity=None):
                     "properties": graph.properties,
                     "properties_TOPLAYER": len(graph.toplayerProperties),
                     "skosConcepts": graph.skosConcepts,
-                    "skosConcepts_TOPLAYER": len(graph.toplayerSkosConcepts),
+                    "skosConcepts_TOPLAYER": len(graph.toplayer_skos),
                     # "TOTAL_CLASSES": c_total,
                     # "TOTAL_PROPERTIES": p_total,
                     # "TOTAL_CONCEPTS": s_total,

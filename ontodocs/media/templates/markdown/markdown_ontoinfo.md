@@ -47,40 +47,40 @@ Prefix   | URI      |
 
 ## Entities  
 
-{% if ontospy_graph.classes %}
+{% if ontospy_graph.all_classes%}
 #### Classes ({{ontospy_graph.classes|length}})
 
-{% for each in ontospy_graph.classes  %}
+{% for each in ontospy_graph.all_classes %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.skosConcepts %}
+{% if ontospy_graph.all_skos %}
 #### SKOS Concepts ({{ontospy_graph.skosConcepts|length}})
 
-{% for each in ontograph.skosConcepts  %}
+{% for each in ontograph.all_skos  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.objectProperties %}
+{% if ontospy_graph.all_properties_object%}
 #### Object Properties ({{ontospy_graph.objectProperties|length}})
 
-{% for each in ontospy_graph.objectProperties  %}
+{% for each in ontospy_graph.all_properties_object %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.datatypeProperties %}
+{% if ontospy_graph.all_properties_datatype%}
 #### Datatype Properties ({{ontospy_graph.datatypeProperties|length}})
 
-{% for each in ontospy_graph.datatypeProperties  %}
+{% for each in ontospy_graph.all_properties_datatype %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
@@ -97,11 +97,11 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if not ontospy_graph.objectProperties and not ontospy_graph.dataProperties and not ontospy_graph.annotationProperties %}
-{% if ontospy_graph.properties %}
+{% if not ontospy_graph.all_properties_objectand not ontospy_graph.dataProperties and not ontospy_graph.annotationProperties %}
+{% if ontospy_graph.all_properties %}
 #### Properties ({{ontospy_graph.properties|length}})
 
-{% for each in ontospy_graph.properties  %}
+{% for each in ontospy_graph.all_properties  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 

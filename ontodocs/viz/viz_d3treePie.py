@@ -100,7 +100,7 @@ if __name__ == '__main__':
 # 	"""
 # 	"""
 # 	try:
-# 		ontology = graph.ontologies[0]
+# 		ontology = graph.all_ontologies[0]
 # 		uri = ontology.uri
 # 	except:
 # 		ontology = None

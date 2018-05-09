@@ -79,8 +79,8 @@ class VizFactory(object):
 
     def infer_best_title(self):
         """Selects something usable as a title for an ontospy graph"""
-        if self.ontospy_graph.ontologies:
-            return self.ontospy_graph.ontologies[0].uri
+        if self.ontospy_graph.all_ontologies:
+            return self.ontospy_graph.all_ontologies[0].uri
         elif self.ontospy_graph.sources:
             return self.ontospy_graph.sources[0]
         else:
@@ -188,7 +188,7 @@ class VizFactory(object):
             "docs_title": self.title,
             "namespaces": self.ontospy_graph.namespaces,
             "stats": self.ontospy_graph.stats(),
-            "ontologies": self.ontospy_graph.ontologies,
+            "ontologies": self.ontospy_graph.all_ontologies,
             "sources": self.ontospy_graph.sources,
             "classes": self.ontospy_graph.classes,
             "topclasses": topclasses,

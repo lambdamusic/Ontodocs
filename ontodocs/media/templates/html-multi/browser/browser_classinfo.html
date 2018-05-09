@@ -170,7 +170,7 @@
 
 
 
-          {% if each.shapes %}
+          {% if each.all_shapes%}
            <div class="row"><div class="col-md-12">
              <div class="panel panel-default">
            <div class="panel-heading">
@@ -179,7 +179,7 @@
            <div class="panel-body">
 
 
-             {% for s in each.shapes %}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
+             {% for s in each.all_shapes%}<li><a href="{{s.slug}}.html" title="{{s.uri}}">{{s.qname}}</a></li>{% endfor %}
 
 
            </div>

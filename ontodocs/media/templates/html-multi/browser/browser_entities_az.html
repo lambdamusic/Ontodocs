@@ -46,7 +46,7 @@
         {# first column #}
         <div class="col-md-6">
 
-        {% if ontospy_graph.classes %}
+        {% if ontospy_graph.all_classes%}
           <div class="row">
             <div class="col-md-12">
               <div class="panel panel-default">
@@ -56,7 +56,7 @@
             <div class="panel-body entities-list" style="overflow: auto;">
                <dl>
 
-               {% for each in ontospy_graph.classes  %}
+               {% for each in ontospy_graph.all_classes %}
                    <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
                    <dd>
 {#                       {{ each.bestDescription|default:"[no definition]" }}#}
@@ -73,7 +73,7 @@
 
 
 
-           {% if ontospy_graph.skosConcepts %}
+           {% if ontospy_graph.all_skos %}
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
@@ -83,7 +83,7 @@
                 <div class="panel-body entities-list" style="overflow: auto;">
                    <dl>
 
-                   {% for each in ontospy_graph.skosConcepts  %}
+                   {% for each in ontospy_graph.all_skos  %}
                        <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
                        <dd>
 {#                           {{ each.bestDescription|default:"[no definition]" }}#}
@@ -109,7 +109,7 @@
         <div class="col-md-6">
 
 
-           {% if ontospy_graph.properties %}
+           {% if ontospy_graph.all_properties %}
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
@@ -119,7 +119,7 @@
                 <div class="panel-body entities-list" style="overflow: auto;">
                    <dl>
 
-                   {% for each in ontospy_graph.properties  %}
+                   {% for each in ontospy_graph.all_properties  %}
                        <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
                        <dd>
 {#                           {{ each.bestDescription|default:"[no definition]" }}#}
@@ -138,7 +138,7 @@
 
 
 
-       {% if ontospy_graph.shapes %}
+       {% if ontospy_graph.all_shapes%}
           <div class="row">
             <div class="col-md-12">
               <div class="panel panel-default">
@@ -148,7 +148,7 @@
             <div class="panel-body entities-list" style="overflow: auto;">
                <dl>
 
-               {% for each in ontospy_graph.shapes  %}
+               {% for each in ontospy_graph.all_shapes %}
                    <dt><a href="{{each.slug}}.html">{{each.qname}}</a></dt>
                    <dd>
 {#                           {{ each.bestDescription|default:"[no definition]" }}#}

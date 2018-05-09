@@ -153,7 +153,7 @@
 
 
 
-        {% if ontospy_graph.toplayerSkosConcepts %}
+        {% if ontospy_graph.toplayer_skos %}
             <div class="row"><div class="col-md-12">
               <div class="panel panel-default">
             <div class="panel-heading">
@@ -355,14 +355,14 @@
 
 // SECOND CHART : top layer SKOS
 
-{% if ontospy_graph.toplayerSkosConcepts %}
+{% if ontospy_graph.toplayer_skos %}
 
     var ctx2skos = document.getElementById("toplayerChartSKOS").getContext("2d");
 
     var data2skos = {
             datasets: [{
                 data: [
-                    {% for concept in ontospy_graph.toplayerSkosConcepts %}{{ concept.descendants|length|add:"1"}}{% if not forloop.last %}, {% endif %}
+                    {% for concept in ontospy_graph.toplayer_skos %}{{ concept.descendants|length|add:"1"}}{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 ],
                 backgroundColor: [
@@ -375,7 +375,7 @@
                 label: 'Top Layer' // for legend
             }],
             labels: [
-                {% for concept in ontospy_graph.toplayerSkosConcepts %}"{{concept.bestLabel|safe}}"{% if not forloop.last %}, {% endif %}
+                {% for concept in ontospy_graph.toplayer_skos %}"{{concept.bestLabel|safe}}"{% if not forloop.last %}, {% endif %}
                 {% endfor %}
             ]
         };
