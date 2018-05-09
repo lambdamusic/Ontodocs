@@ -171,10 +171,10 @@ class VizFactory(object):
 
     def _build_basic_context(self):
         """util to return a standard dict used in django as a template context"""
-        # printDebug(str(self.ontospy_graph.toplayer))
-        topclasses = self.ontospy_graph.toplayer[:]
+        # printDebug(str(self.ontospy_graph.toplayer_classes))
+        topclasses = self.ontospy_graph.toplayer_classes[:]
         if len(topclasses) < 3: # massage the toplayer!
-            for topclass in self.ontospy_graph.toplayer:
+            for topclass in self.ontospy_graph.toplayer_classes:
                 for child in topclass.children():
                     if child not in topclasses: topclasses.append(child)
 
@@ -195,7 +195,7 @@ class VizFactory(object):
             "objproperties": self.ontospy_graph.objectProperties,
             "dataproperties": self.ontospy_graph.datatypeProperties,
             "annotationproperties": self.ontospy_graph.annotationProperties,
-            "skosConcepts": self.ontospy_graph.skosConcepts,
+            "skosConcepts": self.ontospy_graph.all_skos,
             "instances": []
         }
 

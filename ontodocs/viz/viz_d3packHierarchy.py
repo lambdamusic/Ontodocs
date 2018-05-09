@@ -43,11 +43,11 @@ class D3PackHierarchyViz(VizFactory):
         OVERRIDING THIS METHOD from Factory
         """
 
-        jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer)
+        jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_classes)
         c_total = len(self.ontospy_graph.classes)
 
 
-        if len(self.ontospy_graph.toplayer) == 1:
+        if len(self.ontospy_graph.toplayer_classes) == 1:
             # the first element can be the single top level
             JSON_DATA_CLASSES = json.dumps(jsontree_classes[0])
         else:

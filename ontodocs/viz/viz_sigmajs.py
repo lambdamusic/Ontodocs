@@ -168,13 +168,13 @@ def run(graph, save_on_github=False, main_entity=None):
     JSON_DATA_CLASSES = json.dumps(dict_graph)
 
     if False:
-        c_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer)
-        p_mylist = build_D3treeStandard(0, 99, 1, graph.toplayerProperties)
+        c_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer_classes)
+        p_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer_properties)
         s_mylist = build_D3treeStandard(0, 99, 1, graph.toplayer_skos)
 
         c_total = len(graph.classes)
-        p_total = len(graph.properties)
-        s_total = len(graph.skosConcepts)
+        p_total = len(graph.all_properties)
+        s_total = len(graph.all_skos)
 
         # hack to make sure that we have a default top level object
         JSON_DATA_CLASSES = json.dumps({'children' : c_mylist, 'name' : 'owl:Thing', 'id' : "None" })
@@ -187,10 +187,10 @@ def run(graph, save_on_github=False, main_entity=None):
                     "main_uri" : uri,
                     "STATIC_PATH": ONTODOCS_VIZ_STATIC,
                     "classes": graph.classes,
-                    "classes_TOPLAYER": len(graph.toplayer),
-                    "properties": graph.properties,
-                    "properties_TOPLAYER": len(graph.toplayerProperties),
-                    "skosConcepts": graph.skosConcepts,
+                    "classes_TOPLAYER": len(graph.toplayer_classes),
+                    "properties": graph.all_properties,
+                    "properties_TOPLAYER": len(graph.toplayer_properties),
+                    "skosConcepts": graph.all_skos,
                     "skosConcepts_TOPLAYER": len(graph.toplayer_skos),
                     # "TOTAL_CLASSES": c_total,
                     # "TOTAL_PROPERTIES": p_total,

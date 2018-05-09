@@ -141,7 +141,7 @@ if __name__ == '__main__':
         contents = func(g, False, None)
         index_url = _saveVizLocally(contents, "index.html", DEST_FOLDER)
         
-        entities = [g.classes, g.properties, g.skosConcepts]
+        entities = [g.classes, g.all_properties, g.all_skos]
         for group in entities:
             for c in group:
                 # getting main func dynamically

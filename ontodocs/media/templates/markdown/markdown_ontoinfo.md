@@ -58,7 +58,7 @@ Prefix   | URI      |
 
 
 {% if ontospy_graph.all_skos %}
-#### SKOS Concepts ({{ontospy_graph.skosConcepts|length}})
+#### SKOS Concepts ({{ontospy_graph.all_skos|length}})
 
 {% for each in ontograph.all_skos  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
@@ -99,7 +99,7 @@ Prefix   | URI      |
 
 {% if not ontospy_graph.all_properties_objectand not ontospy_graph.dataProperties and not ontospy_graph.annotationProperties %}
 {% if ontospy_graph.all_properties %}
-#### Properties ({{ontospy_graph.properties|length}})
+#### Properties ({{ontospy_graph.all_properties|length}})
 
 {% for each in ontospy_graph.all_properties  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
