@@ -48,7 +48,7 @@ Prefix   | URI      |
 ## Entities  
 
 {% if ontospy_graph.all_classes%}
-#### Classes ({{ontospy_graph.classes|length}})
+#### Classes ({{ontospy_graph.all_classes|length}})
 
 {% for each in ontospy_graph.all_classes %}
 - [{{each.qname}}]({{each.slug}}.md "Open")

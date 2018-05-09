@@ -42,7 +42,7 @@ class D3PartitionTableViz(VizFactory):
         """
 
         jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_classes)
-        c_total = len(self.ontospy_graph.classes)
+        c_total = len(self.ontospy_graph.all_classes)
 
         JSON_DATA_CLASSES = json.dumps({'children': jsontree_classes, 'name': 'owl:Thing',})
 

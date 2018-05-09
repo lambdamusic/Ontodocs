@@ -44,7 +44,7 @@ class D3TreeViz(VizFactory):
         p_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_properties)
         s_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_skos)
 
-        c_total = len(self.ontospy_graph.classes)
+        c_total = len(self.ontospy_graph.all_classes)
         p_total = len(self.ontospy_graph.all_properties)
         s_total = len(self.ontospy_graph.all_skos)
 

@@ -44,7 +44,7 @@ class D3PackHierarchyViz(VizFactory):
         """
 
         jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_classes)
-        c_total = len(self.ontospy_graph.classes)
+        c_total = len(self.ontospy_graph.all_classes)
 
 
         if len(self.ontospy_graph.toplayer_classes) == 1:

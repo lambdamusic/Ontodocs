@@ -69,7 +69,7 @@ class KompleteViz(VizFactory):
 
 
 
-        if self.ontospy_graph.classes:
+        if self.ontospy_graph.all_classes:
             # CLASSES = ENTITIES TREE
             extra_context = {"ontograph": self.ontospy_graph, "theme": self.theme,
                             "treetype" : "classes",
@@ -78,7 +78,7 @@ class KompleteViz(VizFactory):
             FILE_NAME = "entities-tree-classes.html"
             self._save2File(contents, FILE_NAME, browser_output_path)
             # BROWSER PAGES - CLASSES ======
-            for entity in self.ontospy_graph.classes:
+            for entity in self.ontospy_graph.all_classes:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "class",
                                 "theme": self.theme,

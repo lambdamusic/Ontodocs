@@ -9,7 +9,7 @@
         </li>
 
         {% if ontospy_graph.all_classes%}
-          <li class="-second-level" id="sd_classes"><a {% ifequal thispage "classes" %}class="active"{% endifequal %}href="entities-tree-classes.html">Classes ({{ontospy_graph.classes|length}})</a>
+          <li class="-second-level" id="sd_classes"><a {% ifequal thispage "classes" %}class="active"{% endifequal %}href="entities-tree-classes.html">Classes ({{ontospy_graph.all_classes|length}})</a>
           </li>
 
             {# simulated second level #}

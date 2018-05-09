@@ -44,10 +44,10 @@ class MarkdownViz(VizFactory):
 
         browser_output_path = self.output_path
 
-        if self.ontospy_graph.classes:
+        if self.ontospy_graph.all_classes:
 
             # BROWSER PAGES - CLASSES ======
-            for entity in self.ontospy_graph.classes:
+            for entity in self.ontospy_graph.all_classes:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "class",
                                 "ontograph": self.ontospy_graph

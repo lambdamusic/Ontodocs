@@ -39,7 +39,7 @@ class SigmaViz(VizFactory):
         OVERRIDING THIS METHOD from Factory
         """
 
-        c_mydict = build_class_json(self.ontospy_graph.classes)
+        c_mydict = build_class_json(self.ontospy_graph.all_classes)
         JSON_DATA_CLASSES = json.dumps(c_mydict)
 
 

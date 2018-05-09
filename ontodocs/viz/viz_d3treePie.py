@@ -41,7 +41,7 @@ class D3TreePieViz(VizFactory):
 		"""
 
 		jsontree_classes = build_D3treepie(0, 99, 1, self.ontospy_graph.toplayer_classes)
-		c_total = len(self.ontospy_graph.classes)
+		c_total = len(self.ontospy_graph.all_classes)
 		c_toplayer = len(self.ontospy_graph.toplayer_classes)
 
 		# weird - DBCheck!
