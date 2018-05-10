@@ -42,10 +42,10 @@
 # 				for c in o.classes:
 # 					c.describe()
 #
-# 				for p in o.properties:
+# 				for p in o.all_properties:
 # 					p.describe()
 #
-# 				for s in o.skosConcepts:
+# 				for s in o.all_skos_concepts:
 # 					s.describe()
 #
 # 				# self.assertEqual(type(o), ontospy.Ontology)
@@ -80,7 +80,7 @@
 # 				for c in o.classes:
 # 					c.describe()
 #
-# 				for p in o.properties:
+# 				for p in o.all_properties:
 # 					p.describe()
 # 			except:
 # 				printDebug("An error occured - are you sure this resource is online?")

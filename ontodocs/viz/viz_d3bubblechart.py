@@ -39,8 +39,8 @@ class D3BubbleChartViz(VizFactory):
         OVERRIDING THIS METHOD from Factory
         """
 
-        jsontree_classes = build_D3bubbleChart(0, 99, 1, self.ontospy_graph.toplayer)
-        c_total = len(self.ontospy_graph.classes)
+        jsontree_classes = build_D3bubbleChart(0, 99, 1, self.ontospy_graph.toplayer_classes)
+        c_total = len(self.ontospy_graph.all_classes)
 
         JSON_DATA_CLASSES = json.dumps({'children': jsontree_classes, 'name': 'owl:Thing',})
 

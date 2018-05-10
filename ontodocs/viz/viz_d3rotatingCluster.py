@@ -42,8 +42,8 @@ class D3RotatingClusterViz(VizFactory):
         OVERRIDING THIS METHOD from Factory
         """
 
-        jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer)
-        c_total = len(self.ontospy_graph.classes)
+        jsontree_classes = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_classes)
+        c_total = len(self.ontospy_graph.all_classes)
 
         JSON_DATA_CLASSES = json.dumps({'children': jsontree_classes, 'name': 'owl:Thing',})
 
@@ -92,7 +92,7 @@ def run(graph, save_on_github=False, main_entity=None):
 	"""
 	"""
 	try:
-		ontology = graph.ontologies[0]
+		ontology = graph.all_ontologies[0]
 		uri = ontology.uri
 	except:
 		ontology = None
@@ -104,7 +104,7 @@ def run(graph, save_on_github=False, main_entity=None):
 
 	c_total = len(graph.classes)
 
-	mylist = build_D3treeStandard(0, 99, 1, graph.toplayer)
+	mylist = build_D3treeStandard(0, 99, 1, graph.toplayer_classes)
 
 	JSON_DATA_CLASSES = json.dumps({'children': mylist, 'name': 'owl:Thing',})
 

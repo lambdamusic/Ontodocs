@@ -40,9 +40,9 @@ class D3TreePieViz(VizFactory):
 		OVERRIDING THIS METHOD from Factory
 		"""
 
-		jsontree_classes = build_D3treepie(0, 99, 1, self.ontospy_graph.toplayer)
-		c_total = len(self.ontospy_graph.classes)
-		c_toplayer = len(self.ontospy_graph.toplayer)
+		jsontree_classes = build_D3treepie(0, 99, 1, self.ontospy_graph.toplayer_classes)
+		c_total = len(self.ontospy_graph.all_classes)
+		c_toplayer = len(self.ontospy_graph.toplayer_classes)
 
 		# weird - DBCheck!
 		JSON_DATA_CLASSES = json.dumps(["owl:Thing", [c_toplayer, c_toplayer], jsontree_classes])
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 # 	"""
 # 	"""
 # 	try:
-# 		ontology = graph.ontologies[0]
+# 		ontology = graph.all_ontologies[0]
 # 		uri = ontology.uri
 # 	except:
 # 		ontology = None
@@ -111,9 +111,9 @@ if __name__ == '__main__':
 # 	t = Template(ontotemplate.read())
 #
 # 	c_total = len(graph.classes)
-# 	c_toplayer = len(graph.toplayer)
+# 	c_toplayer = len(graph.toplayer_classes)
 #
-# 	mydict = build_D3treepie(0, 99, 1, graph.toplayer)
+# 	mydict = build_D3treepie(0, 99, 1, graph.toplayer_classes)
 #
 # 	# JSON_DATA_CLASSES = json.dumps({'children': mylist, 'name': 'owl:Thing',})
 # 	JSON_DATA_CLASSES = json.dumps(["owl:Thing", [c_toplayer, c_toplayer], mydict])

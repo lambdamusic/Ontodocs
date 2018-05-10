@@ -47,61 +47,61 @@ Prefix   | URI      |
 
 ## Entities  
 
-{% if ontospy_graph.classes %}
-#### Classes ({{ontospy_graph.classes|length}})
+{% if ontospy_graph.all_classes%}
+#### Classes ({{ontospy_graph.all_classes|length}})
 
-{% for each in ontospy_graph.classes  %}
+{% for each in ontospy_graph.all_classes %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.skosConcepts %}
-#### SKOS Concepts ({{ontospy_graph.skosConcepts|length}})
+{% if ontospy_graph.all_skos_concepts %}
+#### SKOS Concepts ({{ontospy_graph.all_skos_concepts|length}})
 
-{% for each in ontograph.skosConcepts  %}
+{% for each in ontograph.all_skos_concepts  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.objectProperties %}
-#### Object Properties ({{ontospy_graph.objectProperties|length}})
+{% if ontospy_graph.all_properties_object %}
+#### Object Properties ({{ontospy_graph.all_properties_object|length}})
 
-{% for each in ontospy_graph.objectProperties  %}
+{% for each in ontospy_graph.all_properties_object %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.datatypeProperties %}
-#### Datatype Properties ({{ontospy_graph.datatypeProperties|length}})
+{% if ontospy_graph.all_properties_datatype %}
+#### Datatype Properties ({{ontospy_graph.all_properties_datatype|length}})
 
-{% for each in ontospy_graph.datatypeProperties  %}
+{% for each in ontospy_graph.all_properties_datatype %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if ontospy_graph.annotationProperties %}
-#### Annotation Properties ({{ontograph.annotationProperties|length}})
+{% if ontospy_graph.all_properties_annotation %}
+#### Annotation Properties ({{ontograph.all_properties_annotation|length}})
 
-{% for each in ontospy_graph.annotationProperties  %}
+{% for each in ontospy_graph.all_properties_annotation  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 
 {% endif %}
 
 
-{% if not ontospy_graph.objectProperties and not ontospy_graph.dataProperties and not ontospy_graph.annotationProperties %}
-{% if ontospy_graph.properties %}
-#### Properties ({{ontospy_graph.properties|length}})
+{% if not ontospy_graph.all_properties_object and not ontospy_graph.all_properties_datatype and not ontospy_graph.all_properties_annotation %}
+{% if ontospy_graph.all_properties %}
+#### Properties ({{ontospy_graph.all_properties|length}})
 
-{% for each in ontospy_graph.properties  %}
+{% for each in ontospy_graph.all_properties  %}
 - [{{each.qname}}]({{each.slug}}.md "Open")
 {% endfor %}
 

@@ -40,13 +40,13 @@ class D3TreeViz(VizFactory):
         """
 
 
-        c_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer)
-        p_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayerProperties)
-        s_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayerSkosConcepts)
+        c_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_classes)
+        p_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_properties)
+        s_mylist = build_D3treeStandard(0, 99, 1, self.ontospy_graph.toplayer_skos)
 
-        c_total = len(self.ontospy_graph.classes)
-        p_total = len(self.ontospy_graph.properties)
-        s_total = len(self.ontospy_graph.skosConcepts)
+        c_total = len(self.ontospy_graph.all_classes)
+        p_total = len(self.ontospy_graph.all_properties)
+        s_total = len(self.ontospy_graph.all_skos_concepts)
 
 
         if False:

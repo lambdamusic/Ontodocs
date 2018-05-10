@@ -69,7 +69,7 @@ class KompleteViz(VizFactory):
 
 
 
-        if self.ontospy_graph.classes:
+        if self.ontospy_graph.all_classes:
             # CLASSES = ENTITIES TREE
             extra_context = {"ontograph": self.ontospy_graph, "theme": self.theme,
                             "treetype" : "classes",
@@ -78,7 +78,7 @@ class KompleteViz(VizFactory):
             FILE_NAME = "entities-tree-classes.html"
             self._save2File(contents, FILE_NAME, browser_output_path)
             # BROWSER PAGES - CLASSES ======
-            for entity in self.ontospy_graph.classes:
+            for entity in self.ontospy_graph.all_classes:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "class",
                                 "theme": self.theme,
@@ -90,7 +90,7 @@ class KompleteViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
-        if self.ontospy_graph.properties:
+        if self.ontospy_graph.all_properties:
 
             # PROPERTIES = ENTITIES TREE
             extra_context = {"ontograph": self.ontospy_graph, "theme": self.theme,
@@ -102,7 +102,7 @@ class KompleteViz(VizFactory):
 
             # BROWSER PAGES - PROPERTIES ======
 
-            for entity in self.ontospy_graph.properties:
+            for entity in self.ontospy_graph.all_properties:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "property",
                                 "theme": self.theme,
@@ -114,7 +114,7 @@ class KompleteViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
-        if self.ontospy_graph.skosConcepts:
+        if self.ontospy_graph.all_skos_concepts:
 
             # CONCEPTS = ENTITIES TREE
 
@@ -127,7 +127,7 @@ class KompleteViz(VizFactory):
 
             # BROWSER PAGES - CONCEPTS ======
 
-            for entity in self.ontospy_graph.skosConcepts:
+            for entity in self.ontospy_graph.all_skos_concepts:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "concept",
                                 "theme": self.theme,
@@ -139,7 +139,7 @@ class KompleteViz(VizFactory):
                 self._save2File(contents, FILE_NAME, browser_output_path)
 
 
-        if self.ontospy_graph.shapes:
+        if self.ontospy_graph.all_shapes:
 
             # SHAPES = ENTITIES TREE
 
@@ -151,7 +151,7 @@ class KompleteViz(VizFactory):
 
             # BROWSER PAGES - SHAPES ======
 
-            for entity in self.ontospy_graph.shapes:
+            for entity in self.ontospy_graph.all_shapes:
                 extra_context = {"main_entity": entity,
                                 "main_entity_type": "shape",
                                 "theme": self.theme,

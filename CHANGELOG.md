@@ -3,7 +3,10 @@ Changelog
 
 Changelog.
 
-> note: change all h1 headers with ### 
+
+2018-05-09
+---------------------------------
+- v1.2: updates to to be compatible with Ontospy [refactoring 1.9](https://github.com/lambdamusic/Ontospy/pull/41)
 
 
 2017-08-30
