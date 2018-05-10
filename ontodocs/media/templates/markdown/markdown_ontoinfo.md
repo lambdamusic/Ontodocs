@@ -67,7 +67,7 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if ontospy_graph.all_properties_object%}
+{% if ontospy_graph.all_properties_object %}
 #### Object Properties ({{ontospy_graph.all_properties_object|length}})
 
 {% for each in ontospy_graph.all_properties_object %}
@@ -77,7 +77,7 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if ontospy_graph.all_properties_datatype%}
+{% if ontospy_graph.all_properties_datatype %}
 #### Datatype Properties ({{ontospy_graph.all_properties_datatype|length}})
 
 {% for each in ontospy_graph.all_properties_datatype %}
@@ -97,7 +97,7 @@ Prefix   | URI      |
 {% endif %}
 
 
-{% if not ontospy_graph.all_properties_objectand not ontospy_graph.dataProperties and not ontospy_graph.all_properties_annotation %}
+{% if not ontospy_graph.all_properties_object and not ontospy_graph.all_properties_datatype and not ontospy_graph.all_properties_annotation %}
 {% if ontospy_graph.all_properties %}
 #### Properties ({{ontospy_graph.all_properties|length}})
 
