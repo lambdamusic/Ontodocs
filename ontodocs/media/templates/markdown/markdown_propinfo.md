@@ -61,7 +61,7 @@ owl:Thing
 
 #### Implementation
 ```
-{{each.serialize|safe}}
+{{each.rdf_source|safe}}
 ```
 
 

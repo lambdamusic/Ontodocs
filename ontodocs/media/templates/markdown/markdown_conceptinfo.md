@@ -56,7 +56,7 @@ skos:Concept
 
 #### Implementation
 ```
-{{each.serialize|safe}}
+{{each.rdf_source|safe}}
 ```
 
 {% endwith %}

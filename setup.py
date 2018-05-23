@@ -1,7 +1,15 @@
+# setup.py proper begins here
+from setuptools import setup, find_packages  # Always prefer setuptools over distutils
+from codecs import open  # To use a consistent encoding
+from os import path
+import os
 
 # trick to manage package versions in one place only
 # http://stackoverflow.com/questions/458550/standard-way-to-embed-version-into-python-package
 import re
+
+here = path.abspath(path.dirname(__file__))
+
 VERSIONFILE="ontodocs/VERSION.py"
 verstrline = open(VERSIONFILE, "rt").read()
 VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
@@ -14,16 +22,8 @@ else:
 
 
 
-# setup.py proper begins here
-from setuptools import setup, find_packages  # Always prefer setuptools over distutils
-from codecs import open  # To use a consistent encoding
-from os import path
-import os
-
-here = path.abspath(path.dirname(__file__))
-
-# Get the long description from the relevant file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+# Get the long description from the README file
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
@@ -55,35 +55,17 @@ templates_root = os.path.join(project_root, "media", "templates")
 package_data_folders = get_package_folders(static_root, project_root) + get_package_folders(templates_root, project_root)
 
 
-# //// for testinging to fix errors
-if False:
-    for el in package_data_folders:
-        print el, os.path.isdir(el)
-# /////
-
-
 
 setup(
     name='ontodocs',
-
-    # Versions should comply with PEP440.  For a discussion on single-sourcing
-    # the version across setup.py and the project code, see
-    # https://packaging.python.org/en/latest/distributing.html#version
     version=VERSIONSTRING,
-
     description='A Python package for creating ontology documentation',
     long_description=long_description,
-
-    # The project's main homepage.
+    long_description_content_type='text/markdown',
     url='https://github.com/lambdamusic/ontodocs',
-
-    # Author details
     author='Michele Pasin',
     author_email='michele.pasin@gmail.com',
-
-    # Choose your license
     license='MIT',
-
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         # How mature is this project? Common values are
@@ -110,13 +92,10 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
 
-    # What does your project relate to?
     keywords='ontology semantic web linked data rdf owl documentation',
-
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
-
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
@@ -127,7 +106,6 @@ setup(
 		'django',
         'pygments',
 	],
-
     # List additional groups of dependencies here (e.g. development dependencies).
     # You can install these using the following syntax, for example:
     # $ pip install -e .[dev,test]

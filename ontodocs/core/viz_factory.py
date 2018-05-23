@@ -232,7 +232,7 @@ class VizFactory(object):
         using Pygments CSS
         """
         try:
-            pygments_code = highlight(ontospy_entity.serialize(), TurtleLexer(), HtmlFormatter())
+            pygments_code = highlight(ontospy_entity.rdf_source(), TurtleLexer(), HtmlFormatter())
             pygments_code_css = HtmlFormatter().get_style_defs('.highlight')
             return {"pygments_code": pygments_code,
                     "pygments_code_css": pygments_code_css

@@ -33,7 +33,7 @@
 	{% if ontology.annotations %}
 	<hr>
 	<b class="section-title">Implementation:</b>
-	<pre class="turtlesource">{{ontology.serialize|escape}}</pre>
+	<pre class="turtlesource">{{ontology.rdf_source|escape}}</pre>
 
 	{% endif %}
 
@@ -92,7 +92,7 @@
 
 	<hr>
 	<b class="section-title">Implementation:</b>
-	<pre class="turtlesource">{{each.serialize|escape}}</pre>
+	<pre class="turtlesource">{{each.rdf_source|escape}}</pre>
 
 </div>
 	
@@ -155,7 +155,7 @@
 	
 	<hr>
 	<b class="section-title">Implementation:</b>
-	<pre class="turtlesource">{{each.serialize|escape}}</pre>
+	<pre class="turtlesource">{{each.rdf_source|escape}}</pre>
 
 
 </div>
@@ -211,7 +211,7 @@
 	
 	<hr>
 	<b class="section-title">Implementation:</b>
-	<pre class="turtlesource">{{each.serialize|escape}}</pre>
+	<pre class="turtlesource">{{each.rdf_source|escape}}</pre>
 
 </div>
 	
