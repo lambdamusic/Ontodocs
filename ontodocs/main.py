@@ -48,6 +48,8 @@ def main_cli(source=None,
     """
 Ontodocs allows to create  documentation for ontologies encoded in RDF/OWL.
 
+IMPORTANT: in future versions this CLI will be integrated within ontospy 
+
 E.g.:
 
 > ontodocs http://www.w3.org/2008/05/skos# --theme random -o ~/Desktop/skos
