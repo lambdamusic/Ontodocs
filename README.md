@@ -1,3 +1,5 @@
 # Ontodocs
 
-## 2018-12: This project is being merged within the main [OntoSpy](https://github.com/lambdamusic/Ontospy) library.
+## 2018-12: This project has been incorporated in the main [OntoSpy](https://github.com/lambdamusic/Ontospy) library.
+
+All open issues have been moved over, the other ones kept here for reference.
