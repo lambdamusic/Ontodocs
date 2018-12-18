@@ -2,4 +2,4 @@
 
 ## 2018-12: This project has been incorporated in the main [OntoSpy](https://github.com/lambdamusic/Ontospy) library.
 
-All open issues have been moved over, the other ones kept here for reference.
+All open issues have been moved over.
